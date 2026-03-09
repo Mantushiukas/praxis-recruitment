@@ -13,6 +13,9 @@ const emptyContent: HomepageContent = {
   pricing: null,
   faq: null,
   services: [],
+  statistics: [],
+  clientLogos: [],
+  testimonials: [],
 };
 
 interface ClientLayoutProps {
