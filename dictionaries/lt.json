@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "services": "Paslaugos",
+    "forCandidates": "Kandidatams",
+    "about": "Apie mus",
+    "contact": "Kontaktai"
+  },
+  "buttons": {
+    "getInTouch": "Susisiekite",
+    "bookCall": "Užsisakyti konsultaciją",
+    "learnHow": "Kaip mes dirbame",
+    "browseJobs": "Darbo skelbimai",
+    "viewAllJobs": "Visi skelbimai",
+    "apply": "Kreiptis",
+    "learnMore": "Sužinoti daugiau"
+  },
+  "hero": {
+    "headline": "Atranka, kurią vykdo praktikai",
+    "subline1": "Padedame įmonėms rasti ir pritraukti Digital Marketing bei IT specialistus remdamiesi realia darbo patirtimi šiose srityse, o ne standartiniais atrankos šablonais.",
+    "subline2": "Praxis Recruitment įkūrė žmonės, patys dirbę industrijoje.",
+    "subline3": "Kandidatus vertiname taip, kaip juos vertintų patys vadovai, ieškantys žmogaus į savo komandą."
+  },
+  "whyPraxis": {
+    "title": "Ne klasikinė atrankų agentūra. Praktikai.",
+    "subtitle1": "Dauguma atrankų agentūrų orientuojasi į procesą.",
+    "subtitle2": "Mes orientuojamės į rezultatą ir realią kompetenciją.",
+    "foundersTitle": "Praxis Recruitment įkūrėjai:",
+    "founder1": "Žygimantas Pocius — Digital Marketer, turintis daugiau nei 12 metų praktinės patirties",
+    "founder2": "Mantas Vaitekūnas — IT profesionalas su giliomis techninėmis žiniomis",
+    "message1": "Atrenkame specialistus tik tose srityse, kurias patys gerai išmanome.",
+    "message2": "Mums nereikia versti pareigybių aprašymų į suprantamą kalbą.",
+    "message3": "Kalbame ta pačia kalba kaip ir žmonės, kuriuos padedame jums samdyti."
+  },
+  "sections": {
+    "whatWeDo": "Ką mes darome",
+    "whatWeDoSubtitle": "Specializuojamės mid ir senior lygio pozicijose, kur svarbi gili patirtis, strateginis mąstymas ir gebėjimas kurti rezultatą.",
+    "specializations": "Mūsų specializacijos",
+    "specializationsSubtitle": "Ekspertų paieška pagrindinėse pramonės šakose",
+    "recentJobs": "Naujausi skelbimai",
+    "recentJobsSubtitle": "Naujausios galimybės",
+    "aboutUs": "Apie Praxis Recruitment",
+    "trustedBy": "Mūsų klientai"
+  },
+  "services": {
+    "digitalMarketing": {
+      "title": "Digital Marketing Recruitment",
+      "description": "Specializuotos atrankos paslaugos digital marketing pozicijoms, kur praktikų patirtis daro tikrą skirtumą.",
+      "items": [
+        "Performance Marketing",
+        "Brand & Marketing Management",
+        "CRM & Marketing Automation",
+        "Content & Social Media",
+        "Agency & Creative Roles"
+      ]
+    },
+    "itEngineering": {
+      "title": "IT & Engineering Recruitment",
+      "description": "Techninė atranka, paremta tikru inžinierijos supratimu.",
+      "items": [
+        "Backend & Full Stack Developers",
+        "Engineering Leads",
+        "DevOps Specialists",
+        "Product & Technical Managers",
+        "Data & Analytics Professionals"
+      ]
+    }
+  },
+  "pricing": {
+    "title": "Aiškus ir rezultatu paremtas bendradarbiavimas",
+    "subtitle": "Dirbame pagal sėkmės mokestį (success fee).",
+    "fee": "12–25 %",
+    "feeDescription": "nuo kandidato metinio bruto atlyginimo",
+    "feeNote": "Mokestis taikomas tik sėkmingai įdarbinus specialistą",
+    "dependsOnTitle": "Galutinė kaina priklauso nuo:",
+    "dependsOn": [
+      "Pozicijos seniority lygio",
+      "Rinkos sudėtingumo",
+      "Talentų pasiūlos",
+      "Bendradarbiavimo išskirtinumo"
+    ],
+    "includedTitle": "Į paslaugą įeina:",
+    "included": [
+      "Tikslinga kandidatų paieška",
+      "Išsamus, praktikų atliekamas screening",
+      "Struktūruotas kompetencijų vertinimas",
+      "Atrinktų kandidatų (shortlist) pristatymas",
+      "Pagalba pasiūlymo ir derybų etape"
+    ]
+  },
+  "faq": {
+    "title": "DUK",
+    "subtitle": "Dažniausiai užduodami klausimai apie darbą su Praxis Recruitment",
+    "items": [
+      {
+        "question": "Ar esate tradicinė atrankų agentūra?",
+        "answer": "Ne. Pirmiausia esame praktikai. Dirbame tik tose srityse, kuriose turime realios profesinės patirties."
+      },
+      {
+        "question": "Kokiose pozicijose specializuojatės?",
+        "answer": "Mid ir senior lygio Digital Marketing ir IT pozicijose, kur būtinas gilus industrijos supratimas."
+      },
+      {
+        "question": "Kiek trunka atrankos procesas?",
+        "answer": "Dažniausiai nuo 1 iki 7 savaičių – priklausomai nuo pozicijos sudėtingumo ir situacijos rinkoje."
+      },
+      {
+        "question": "Ar suteikiate garantijas?",
+        "answer": "Darbuotojo ilgalaikė sėkmė priklauso nuo įvedimo proceso, vadovavimo kokybės ir vidinių įmonės procesų. Kadangi šie veiksniai yra įmonės atsakomybė, negalime pilnai garantuoti būsimų rezultatų. Tačiau galime užtikrinti, kad atrinktas kandidatas bus motyvuotas, pasiruošęs ir pradės darbą sutartą pirmąją dieną."
+      },
+      {
+        "question": "Ar dirbate tarptautiniu mastu?",
+        "answer": "Taip. Nors veiklą pradedame Lietuvoje, esame atviri ir tarptautiniams projektams."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Samdykite remdamiesi aiškiu supratimu, o ne spėjimu.",
+    "subtitle": "Aptarkime jūsų kitą Digital arba IT specialistą."
+  },
+  "jobCard": {
+    "location": "Vieta",
+    "type": "Tipas",
+    "salary": "Atlyginimas"
+  },
+  "footer": {
+    "company": "Įmonė",
+    "forCandidates": "Kandidatams",
+    "getInTouch": "Susisiekite",
+    "copyright": "Visos teisės saugomos",
+    "tagline": "Atranka, kurią vykdo praktikai"
+  }
+}

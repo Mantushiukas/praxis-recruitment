@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "services": "Services",
+    "forCandidates": "For Candidates",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "buttons": {
+    "getInTouch": "Get in Touch",
+    "bookCall": "Book a Strategy Call",
+    "learnHow": "Learn How We Work",
+    "browseJobs": "Browse Jobs",
+    "viewAllJobs": "View All Jobs",
+    "apply": "Apply",
+    "learnMore": "Learn More"
+  },
+  "hero": {
+    "headline": "Recruitment by Practitioners.",
+    "subline1": "We help companies hire Digital Marketing and IT talent through real industry expertise — not generic recruitment processes.",
+    "subline2": "Praxis Recruitment was built by operators.",
+    "subline3": "We evaluate candidates the way hiring managers actually think."
+  },
+  "sections": {
+    "whatWeDo": "What We Do",
+    "whatWeDoSubtitle": "We specialize in mid to senior-level roles where practitioner insight makes a real difference.",
+    "specializations": "Our Specializations",
+    "specializationsSubtitle": "Expert recruitment across key industries",
+    "recentJobs": "Recent Job Openings",
+    "recentJobsSubtitle": "Explore our latest opportunities",
+    "aboutUs": "About Praxis Recruitment",
+    "trustedBy": "Trusted by Leading Companies"
+  },
+  "whyPraxis": {
+    "title": "Not traditional recruiters. Practitioners.",
+    "subtitle1": "Most recruitment agencies focus on process.",
+    "subtitle2": "We focus on performance and real competence.",
+    "foundersTitle": "Praxis Recruitment was founded by:",
+    "founder1": "Žygimantas Pocius — Digital Marketer with 12+ years of hands-on experience",
+    "founder2": "Mantas Vaitekūnas — IT Professional with deep technical expertise",
+    "message1": "We recruit inside industries we personally understand.",
+    "message2": "We don't translate roles.",
+    "message3": "We speak the language of the people you're hiring."
+  },
+  "services": {
+    "digitalMarketing": {
+      "title": "Digital Marketing Recruitment",
+      "description": "Specialized recruitment for digital marketing roles where practitioner insight matters.",
+      "items": [
+        "Performance Marketing",
+        "Brand & Marketing Management",
+        "CRM & Marketing Automation",
+        "Content & Social Media",
+        "Agency & Creative Roles"
+      ]
+    },
+    "itEngineering": {
+      "title": "IT & Engineering Recruitment",
+      "description": "Technical recruitment backed by real engineering understanding.",
+      "items": [
+        "Backend & Full Stack Developers",
+        "Engineering Leads",
+        "DevOps Specialists",
+        "Product & Technical Managers",
+        "Data & Analytics Professionals"
+      ]
+    }
+  },
+  "pricing": {
+    "title": "Transparent & Performance-Based",
+    "subtitle": "We operate on a success fee model.",
+    "fee": "12–25%",
+    "feeDescription": "of annual gross salary",
+    "feeNote": "(only payable after a successful hire)",
+    "dependsOnTitle": "The final fee depends on:",
+    "dependsOn": [
+      "Role seniority",
+      "Market complexity",
+      "Talent scarcity",
+      "Exclusivity level"
+    ],
+    "includedTitle": "What's Included",
+    "included": [
+      "Precision candidate sourcing",
+      "Deep practitioner-led screening",
+      "Structured evaluation",
+      "Shortlist presentation",
+      "Offer and negotiation support"
+    ]
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Common questions about working with Praxis Recruitment",
+    "items": [
+      {
+        "question": "Are you a traditional recruitment agency?",
+        "answer": "No. We are practitioners first. We recruit within industries we personally work in."
+      },
+      {
+        "question": "What roles do you specialize in?",
+        "answer": "Mid to senior-level Digital Marketing and IT roles where deep industry understanding is essential."
+      },
+      {
+        "question": "How long does the hiring process take?",
+        "answer": "Typically 2–7 weeks, depending on role complexity and market conditions."
+      },
+      {
+        "question": "Do you offer guarantees?",
+        "answer": "An employee's long-term success is shaped by the onboarding experience, leadership, and internal processes within the company. As these elements are managed internally, we cannot fully guarantee future performance outcomes. What we do guarantee is a committed candidate who is prepared, motivated, and ready to start on their first working day."
+      },
+      {
+        "question": "Do you work internationally?",
+        "answer": "Yes. While we begin in Lithuania, we are open to international partnerships."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Hire with Insight. Not Guesswork.",
+    "subtitle": "Let's discuss your next Digital or IT hire."
+  },
+  "stats": {
+    "clientsReturn": "Clients Return",
+    "rolesFilled": "Roles Filled in < 2 Weeks",
+    "placements": "Successful Placements"
+  },
+  "specializations": {
+    "technology": {
+      "name": "Technology",
+      "description": "Software engineers, developers, IT specialists"
+    },
+    "marketing": {
+      "name": "Digital Marketing",
+      "description": "Marketing strategists, content creators, analysts"
+    },
+    "hr": {
+      "name": "Human Resources",
+      "description": "HR professionals, talent acquisition, people ops"
+    }
+  },
+  "about": {
+    "title": "About Praxis Recruitment",
+    "paragraph1": "Praxis Recruitment is built on a foundation of real-world experience. Our team consists of seasoned professionals who have worked across Technology, Digital Marketing, and HR sectors.",
+    "paragraph2": "We don't just match resumes to job descriptions. We understand the nuances of each role, the culture of your organization, and the aspirations of candidates.",
+    "learnMore": "Learn more about us"
+  },
+  "jobCard": {
+    "location": "Location",
+    "type": "Type",
+    "salary": "Salary"
+  },
+  "footer": {
+    "company": "Company",
+    "forCandidates": "For Candidates",
+    "getInTouch": "Get in Touch",
+    "copyright": "All rights reserved",
+    "tagline": "Recruitment by Practitioners"
+  }
+}
