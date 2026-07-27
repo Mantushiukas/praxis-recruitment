@@ -7,17 +7,19 @@ interface LogoProps {
 }
 
 export const Logo = ({ variant = 'header', className = '' }: LogoProps) => {
-  const height = variant === 'header' ? 187 : 32;
-  
+  const maxHeight = variant === 'header' ? 48 : 40;
+  const width = Math.round(maxHeight * 1.7);
+
   return (
     <Link href="/" className={`flex items-center ${className}`}>
       <Image
-        src="/images/logo.png"
-        alt="Praxis Recruitment - Recruitment by Practitioners"
-        width={height * 1.7} // Logo aspect ratio ~1.7:1
-        height={height}
+        src={variant === 'header' ? '/images/logo.png' : '/images/logo-light.png'}
+        alt="Praxis Recruitment"
+        width={width}
+        height={maxHeight}
         priority={variant === 'header'}
-        className="h-auto w-auto max-h-[187px] -my-20"
+        className="h-auto w-auto"
+        style={{ maxHeight: `${maxHeight}px` }}
       />
     </Link>
   );

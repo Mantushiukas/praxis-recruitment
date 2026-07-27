@@ -1,0 +1,1197 @@
+[
+  {
+    "fields": [
+      {
+        "name": "en",
+        "type": "string",
+        "title": "English"
+      }
+    ],
+    "name": "localizedString",
+    "type": "object",
+    "title": "Text (English)"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Full Name"
+      },
+      {
+        "name": "role",
+        "type": "string",
+        "title": "Role (e.g. Co-Founder)"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Professional Title"
+      },
+      {
+        "name": "experienceHeading",
+        "type": "string",
+        "title": "Experience Heading (e.g. \"Hands-on experience in:\")"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "experienceItems",
+        "type": "array"
+      },
+      {
+        "rows": 3,
+        "name": "quote",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "photo",
+        "type": "image"
+      }
+    ],
+    "name": "founder",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Job Title"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "company",
+        "type": "string",
+        "title": "Company Name"
+      },
+      {
+        "placeholder": "Vilnius, Lithuania",
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Full-time",
+              "value": "full-time"
+            },
+            {
+              "title": "Part-time",
+              "value": "part-time"
+            },
+            {
+              "title": "Contract",
+              "value": "contract"
+            },
+            {
+              "title": "Temporary",
+              "value": "temporary"
+            }
+          ]
+        },
+        "name": "workType",
+        "type": "string"
+      },
+      {
+        "name": "salaryMin",
+        "type": "number",
+        "title": "Minimum Salary"
+      },
+      {
+        "name": "salaryMax",
+        "type": "number",
+        "title": "Maximum Salary"
+      },
+      {
+        "options": {
+          "list": [
+            "EUR",
+            "USD",
+            "GBP"
+          ]
+        },
+        "name": "salaryCurrency",
+        "type": "string",
+        "title": "Currency"
+      },
+      {
+        "placeholder": "e.g. before tax, gross monthly",
+        "name": "salaryNote",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "description",
+        "type": "array",
+        "title": "Job Description"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "requirements",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "benefits",
+        "type": "array"
+      },
+      {
+        "name": "contactEmail",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "applyUrl",
+        "type": "url",
+        "title": "Apply URL"
+      },
+      {
+        "initialValue": true,
+        "name": "isPublished",
+        "type": "boolean",
+        "title": "Published"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime"
+      }
+    ],
+    "name": "job",
+    "type": "document",
+    "title": "Job Posting"
+  },
+  {
+    "fields": [
+      {
+        "placeholder": "85%",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "value",
+        "type": "string"
+      },
+      {
+        "placeholder": "Clients Return",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "order",
+        "type": "number",
+        "title": "Display Order"
+      },
+      {
+        "initialValue": true,
+        "description": "Uncheck to hide this stat without deleting it.",
+        "name": "isVisible",
+        "type": "boolean",
+        "title": "Visible on site"
+      }
+    ],
+    "name": "statistic",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "localizedString",
+        "title": "Service Title"
+      },
+      {
+        "name": "description",
+        "type": "localizedString",
+        "title": "Short Description"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString",
+            "title": "Text (English)"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "Service Items (bullets)"
+      },
+      {
+        "initialValue": 1,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "order",
+        "type": "number",
+        "title": "Display Order (1 = first)"
+      }
+    ],
+    "name": "service",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "companyName",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "logo",
+        "type": "image",
+        "title": "Logo Image"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "website",
+        "type": "url",
+        "title": "Website URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "order",
+        "type": "number",
+        "title": "Display Order"
+      }
+    ],
+    "name": "clientLogo",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Main headline on homepage",
+        "name": "heroHeadline",
+        "type": "localizedString"
+      },
+      {
+        "description": "First paragraph under headline",
+        "name": "heroSubline1",
+        "type": "localizedString"
+      },
+      {
+        "name": "heroSubline2",
+        "type": "localizedString"
+      },
+      {
+        "name": "heroSubline3",
+        "type": "localizedString"
+      },
+      {
+        "name": "sectionWhatWeDo",
+        "type": "localizedString",
+        "title": "Section: What We Do (heading)"
+      },
+      {
+        "name": "sectionWhatWeDoSubtitle",
+        "type": "localizedString",
+        "title": "Section: What We Do (subtitle)"
+      },
+      {
+        "name": "finalCtaTitle",
+        "type": "localizedString",
+        "title": "Final CTA Title"
+      },
+      {
+        "name": "finalCtaSubtitle",
+        "type": "localizedString",
+        "title": "Final CTA Subtitle"
+      },
+      {
+        "name": "footerTagline",
+        "type": "localizedString"
+      },
+      {
+        "name": "footerCopyright",
+        "type": "localizedString"
+      },
+      {
+        "name": "contactEmail",
+        "type": "string"
+      },
+      {
+        "name": "companyRegistrationNumber",
+        "type": "string"
+      },
+      {
+        "initialValue": false,
+        "description": "Toggle to show or hide the registration number in the footer.",
+        "name": "showRegistrationNumber",
+        "type": "boolean",
+        "title": "Show Registration Number in Footer"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "linkedinUrl",
+        "type": "url",
+        "title": "LinkedIn URL"
+      },
+      {
+        "initialValue": false,
+        "description": "Toggle to show or hide the client logos strip on the homepage.",
+        "name": "showClientLogos",
+        "type": "boolean",
+        "title": "Show \"Trusted By\" logos section"
+      },
+      {
+        "initialValue": true,
+        "description": "Toggle to show or hide the stats strip on the homepage.",
+        "name": "showStatistics",
+        "type": "boolean",
+        "title": "Show statistics section"
+      },
+      {
+        "initialValue": false,
+        "description": "Toggle to show or hide the testimonials section on the homepage.",
+        "name": "showTestimonials",
+        "type": "boolean",
+        "title": "Show testimonials section"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString",
+        "title": "Section Title"
+      },
+      {
+        "name": "subtitle1",
+        "type": "localizedString"
+      },
+      {
+        "name": "subtitle2",
+        "type": "localizedString"
+      },
+      {
+        "name": "foundersTitle",
+        "type": "localizedString",
+        "title": "Founders Heading"
+      },
+      {
+        "name": "founder1",
+        "type": "localizedString",
+        "title": "Founder 1 (name & role)"
+      },
+      {
+        "name": "founder2",
+        "type": "localizedString",
+        "title": "Founder 2 (name & role)"
+      },
+      {
+        "name": "message1",
+        "type": "localizedString"
+      },
+      {
+        "name": "message2",
+        "type": "localizedString"
+      },
+      {
+        "name": "message3",
+        "type": "localizedString"
+      }
+    ],
+    "name": "whyPraxis",
+    "type": "document",
+    "title": "Why Praxis (Founders & Messages)"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString",
+        "title": "Section Title"
+      },
+      {
+        "name": "subtitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "fee",
+        "type": "localizedString",
+        "title": "Fee (e.g. 12–25 %)"
+      },
+      {
+        "name": "feeDescription",
+        "type": "localizedString"
+      },
+      {
+        "name": "feeNote",
+        "type": "localizedString"
+      },
+      {
+        "name": "dependsOnTitle",
+        "type": "localizedString",
+        "title": "Depends On (heading)"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString",
+            "title": "Text (English)"
+          }
+        ],
+        "name": "dependsOn",
+        "type": "array",
+        "title": "Depends On (list items)"
+      },
+      {
+        "name": "includedTitle",
+        "type": "localizedString",
+        "title": "Included (heading)"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString",
+            "title": "Text (English)"
+          }
+        ],
+        "name": "included",
+        "type": "array",
+        "title": "Included (list items)"
+      }
+    ],
+    "name": "pricing",
+    "type": "document",
+    "title": "Pricing Section"
+  },
+  {
+    "fields": [
+      {
+        "name": "question",
+        "type": "localizedString"
+      },
+      {
+        "name": "answer",
+        "type": "localizedString"
+      }
+    ],
+    "name": "faqItem",
+    "type": "object",
+    "title": "FAQ Item"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString",
+        "title": "Section Title"
+      },
+      {
+        "name": "subtitle",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "faqItem",
+            "title": "FAQ Item"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "FAQ Items"
+      }
+    ],
+    "name": "faq",
+    "type": "document",
+    "title": "FAQ Section"
+  },
+  {
+    "fields": [
+      {
+        "name": "headline",
+        "type": "string",
+        "title": "Page Headline"
+      },
+      {
+        "rows": 3,
+        "name": "intro",
+        "type": "text",
+        "title": "Intro Text"
+      },
+      {
+        "of": [
+          {
+            "type": "founder"
+          }
+        ],
+        "name": "founders",
+        "type": "array"
+      },
+      {
+        "name": "philosophyTitle",
+        "type": "string",
+        "title": "Philosophy Section Title"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "philosophyItems",
+        "type": "array",
+        "title": "Philosophy Lines"
+      }
+    ],
+    "name": "aboutPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "stepNumber",
+        "type": "number"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Step Title"
+      },
+      {
+        "rows": 2,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "Bullet Points"
+      }
+    ],
+    "name": "processStep",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "headline",
+        "type": "string",
+        "title": "Page Headline"
+      },
+      {
+        "rows": 2,
+        "name": "intro",
+        "type": "text",
+        "title": "Intro Text"
+      },
+      {
+        "of": [
+          {
+            "type": "processStep"
+          }
+        ],
+        "name": "steps",
+        "type": "array",
+        "title": "Process Steps"
+      }
+    ],
+    "name": "processPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "quote",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "authorName",
+        "type": "string"
+      },
+      {
+        "name": "authorRole",
+        "type": "string"
+      },
+      {
+        "name": "authorCompany",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "photo",
+        "type": "image",
+        "title": "Author Photo"
+      },
+      {
+        "initialValue": 1,
+        "name": "order",
+        "type": "number",
+        "title": "Display Order"
+      },
+      {
+        "initialValue": true,
+        "description": "Uncheck to hide this testimonial without deleting it.",
+        "name": "isVisible",
+        "type": "boolean",
+        "title": "Visible on site"
+      }
+    ],
+    "name": "testimonial",
+    "type": "document"
+  }
+]

@@ -28,7 +28,7 @@ export const processPageType = defineType({
   title: 'Process Page',
   type: 'document',
   fields: [
-    defineField({ name: 'headline', title: 'Page Headline', type: 'string' }),
+    defineField({ name: 'headline', title: 'Page Headline', type: 'string', initialValue: 'How We Work' }),
     defineField({ name: 'intro', title: 'Intro Text', type: 'text', rows: 2 }),
     defineField({
       name: 'steps',

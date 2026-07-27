@@ -3,21 +3,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from './Logo';
-import { useDictionary } from '@/hooks/useDictionary';
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const dict = useDictionary();
-
-  if (!dict?.nav || !dict?.buttons) {
-    return null;
-  }
 
   const navigation = [
-    { name: dict.nav.services, href: '/#services' },
-    { name: dict.nav.forCandidates, href: '/jobs' },
-    { name: 'Process', href: '/process' },
-    { name: dict.nav.about, href: '/about' },
+    { name: 'For Companies', href: '/for-companies' },
+    { name: 'For Talent', href: '/for-talent' },
+    { name: 'How We Work', href: '/how-we-work' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -45,7 +40,7 @@ export const Header = () => {
               href="/contact"
               className="bg-accent hover:bg-accent-600 text-white px-6 py-2 rounded-xl font-semibold text-sm transition-all hover:shadow-lg hover:scale-105"
             >
-              {dict.buttons.getInTouch}
+              Book a Call
             </Link>
           </div>
 
@@ -88,7 +83,7 @@ export const Header = () => {
                 className="bg-accent hover:bg-accent-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {dict.buttons.getInTouch}
+                Book a Call
               </Link>
             </div>
           </div>

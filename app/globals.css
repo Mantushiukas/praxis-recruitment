@@ -51,17 +51,17 @@
 
 :root {
   /* Brand colors */
-  --color-primary: #36323d;
-  --color-accent: #a885ed;
-  --color-accent-light: #c5b0f1;
+  --color-primary: #23232F;
+  --color-accent: #7756B5;
+  --color-accent-light: #b09ae0;
   
   /* Text colors */
-  --color-text-primary: #36323d;
+  --color-text-primary: #23232F;
   --color-text-secondary: #6B7280;
   
   /* Backgrounds */
   --color-bg-primary: #ffffff;
-  --color-bg-dark: #36323d;
+  --color-bg-dark: #23232F;
   
   /* Borders */
   --color-border-light: #E5E7EB;
