@@ -1,4 +1,5 @@
 import { getAboutPage } from '@/lib/sanity';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const revalidate = 60;
@@ -49,9 +50,11 @@ export default async function AboutPage() {
                   {/* Avatar / Photo */}
                   <div className="flex items-center gap-4 mb-6">
                     {founder.photo?.asset?.url ? (
-                      <img
+                      <Image
                         src={founder.photo.asset.url}
                         alt={founder.name ?? ''}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 rounded-full object-cover border-2 border-accent/30"
                       />
                     ) : (

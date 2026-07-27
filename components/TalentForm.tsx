@@ -68,8 +68,8 @@ export const TalentForm = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-primary mb-2">You're in.</h3>
-        <p className="text-gray-500 font-light">We'll be in touch within 2 business days.</p>
+        <h3 className="text-xl font-bold text-primary mb-2">You&apos;re in.</h3>
+        <p className="text-gray-500 font-light">We&apos;ll be in touch within 2 business days.</p>
       </div>
     );
   }
