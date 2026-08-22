@@ -71,21 +71,17 @@ export const AnimatedStat = ({ value, label }: AnimatedStatProps) => {
 
     return (
       <div ref={ref} className="text-center md:text-left">
-        <div className="relative inline-flex items-center justify-center mb-1 w-14 h-14">
+        <div className="relative inline-flex items-center justify-center mb-1 w-14 h-9">
 
           {/* Orbit ring */}
           <svg
-            className="absolute inset-0 w-full h-full"
-            style={{
-              animation: spinning ? `spin ${6}s linear infinite` : 'none',
-              transition: 'opacity 0.4s',
-            }}
-            viewBox="0 0 56 56"
+            className={`absolute inset-0 w-full h-full transition-opacity duration-400 ${spinning ? 'animate-spin-slow' : 'opacity-0'}`}
+            viewBox="0 0 56 36"
             fill="none"
             aria-hidden="true"
           >
             <ellipse
-              cx="28" cy="28"
+              cx="28" cy="18"
               rx="26" ry="10"
               stroke="#7756B5"
               strokeWidth="1.5"
@@ -96,51 +92,23 @@ export const AnimatedStat = ({ value, label }: AnimatedStatProps) => {
 
           {/* Star 1 */}
           <div
-            className="absolute w-1.5 h-1.5 rounded-full bg-accent"
-            style={{
-              top: '18px',
-              left: '0px',
-              animation: spinning ? `spin 3s linear infinite` : 'none',
-              transformOrigin: '28px 10px',
-              opacity: spinning ? 1 : 0,
-              transition: 'opacity 0.4s',
-            }}
+            className={`absolute w-1.5 h-1.5 rounded-full bg-accent transition-opacity duration-400 ${spinning ? 'animate-spin-medium opacity-100' : 'opacity-0'}`}
+            style={{ top: '4px', left: '0px', transformOrigin: '28px 14px' }}
           />
           {/* Star 2 */}
           <div
-            className="absolute w-1 h-1 rounded-full bg-accent/60"
-            style={{
-              top: '34px',
-              right: '2px',
-              animation: spinning ? `spin 3s linear infinite reverse` : 'none',
-              transformOrigin: '-18px -6px',
-              opacity: spinning ? 1 : 0,
-              transition: 'opacity 0.5s',
-            }}
+            className={`absolute w-1 h-1 rounded-full bg-accent/60 transition-opacity duration-500 ${spinning ? 'animate-spin-medium-reverse opacity-100' : 'opacity-0'}`}
+            style={{ top: '22px', right: '2px', transformOrigin: '-18px -4px' }}
           />
           {/* Star 3 — tiny */}
           <div
-            className="absolute w-1 h-1 rounded-full bg-white/40"
-            style={{
-              top: '14px',
-              right: '4px',
-              animation: spinning ? `spin 4.5s linear infinite` : 'none',
-              transformOrigin: '-16px 14px',
-              opacity: spinning ? 1 : 0,
-              transition: 'opacity 0.6s',
-            }}
+            className={`absolute w-1 h-1 rounded-full bg-white/40 transition-opacity duration-600 ${spinning ? 'animate-spin-slower opacity-100' : 'opacity-0'}`}
+            style={{ top: '2px', right: '4px', transformOrigin: '-16px 16px' }}
           />
 
           <span className="text-3xl font-bold text-accent relative z-10">{value}</span>
         </div>
         <p className="text-gray-500 text-sm font-light">{label}</p>
-
-        <style>{`
-          @keyframes spin {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-          }
-        `}</style>
       </div>
     );
   }

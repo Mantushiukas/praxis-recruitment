@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export const LandingHero = () => {
@@ -12,102 +13,68 @@ export const LandingHero = () => {
   }, []);
 
   return (
-    <section className="min-h-[calc(100vh-4rem)] bg-primary flex flex-col items-center justify-center px-6 py-8">
+    <section className="min-h-[calc(100vh-4rem)] bg-[#2e2d3a] flex flex-col lg:flex-row overflow-hidden">
 
-      {/* Headline */}
-      <div
-        className={`text-center mb-8 max-w-2xl transition-all duration-700 ease-out ${
-          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-        }`}
-      >
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3">
-          Recruitment by Practitioners
+      {/* LEFT — content */}
+      <div className="flex-1 flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-16 lg:py-0">
+
+        <div className={`transition-all duration-600 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <span className="text-accent font-semibold text-xs uppercase tracking-widest">
+            Recruitment by Practitioners
+          </span>
+        </div>
+
+        <h1 className={`mt-5 text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-5xl font-bold text-white tracking-tight leading-[1.15] transition-all duration-700 ease-out delay-100 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          We hire digital & tech talent that{' '}
+          <span className="text-accent">drives results.</span>
         </h1>
-        <p className="text-base md:text-lg text-gray-300 font-light leading-relaxed">
-          Connecting high-performing talent with companies building digital and tech teams.
+
+        <p className={`mt-6 text-base md:text-lg text-gray-300 font-light leading-relaxed max-w-md transition-all duration-700 ease-out delay-200 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          Built by practitioners with 25+ years of combined experience.
+          <br />
+          We know what great looks like — because we&apos;ve done the job.
+        </p>
+
+        <div className={`mt-8 flex flex-col sm:flex-row gap-4 transition-all duration-700 ease-out delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          <Link
+            href="/for-companies"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all hover:shadow-lg hover:scale-105"
+          >
+            For Companies
+            <span aria-hidden="true">→</span>
+          </Link>
+          <Link
+            href="/for-talent"
+            className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white text-white font-semibold px-7 py-3.5 rounded-xl transition-all"
+          >
+            For Talent
+          </Link>
+        </div>
+
+        <p className={`mt-10 text-xs text-gray-500 font-light transition-all duration-700 ease-out delay-500 ${visible ? 'opacity-100' : 'opacity-0'}`}>
+          Trusted by companies across Europe
         </p>
       </div>
 
-      {/* Two paths */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
-
-        {/* For Companies */}
+      {/* RIGHT — photo */}
+      <div className={`relative w-full lg:w-[55%] min-h-[340px] lg:min-h-full shrink-0 transition-opacity duration-1000 ease-out delay-200 ${visible ? 'opacity-100' : 'opacity-0'}`}>
+        <Image
+          src="/images/founders.png"
+          alt="Praxis Recruitment founders"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="(max-width: 1024px) 100vw, 55vw"
+        />
+        {/* Smooth left blend */}
         <div
-          className={`transition-all duration-700 ease-out delay-150 ${
-            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <Link
-            href="/for-companies"
-            aria-label="For Companies — hire specialists"
-            className="group relative block rounded-2xl p-px overflow-hidden
-              bg-gradient-to-br from-accent/60 via-white/5 to-transparent
-              hover:from-accent hover:via-accent/60 hover:to-accent/20
-              transition-all duration-300 hover:shadow-[0_0_32px_rgba(119,86,181,0.35)] hover:scale-105"
-          >
-            <div className="relative bg-primary rounded-2xl p-8 text-center group-hover:bg-[#1e1e2a] transition-colors duration-300">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 group-hover:bg-accent flex items-center justify-center mx-auto mb-5 transition-colors duration-300">
-                <svg
-                  className="w-7 h-7 text-accent group-hover:text-white transition-colors duration-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-white mb-3">For Companies</h2>
-              <p className="text-gray-300 group-hover:text-white/90 font-light text-sm leading-relaxed transition-colors">
-                Hire specialists in marketing, technology, product, and data.
-              </p>
-              <div className="mt-6 inline-flex items-center gap-2 text-accent group-hover:text-white font-semibold text-sm transition-colors">
-                Start Hiring
-                <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* For Talent */}
-        <div
-          className={`transition-all duration-700 ease-out delay-300 ${
-            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <Link
-            href="/for-talent"
-            aria-label="For Talent — join our network"
-            className="group relative block rounded-2xl p-px overflow-hidden
-              bg-gradient-to-br from-accent/60 via-white/5 to-transparent
-              hover:from-accent hover:via-accent/60 hover:to-accent/20
-              transition-all duration-300 hover:shadow-[0_0_32px_rgba(119,86,181,0.35)] hover:scale-105"
-          >
-            <div className="relative bg-primary rounded-2xl p-8 text-center group-hover:bg-[#1e1e2a] transition-colors duration-300">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 group-hover:bg-accent flex items-center justify-center mx-auto mb-5 transition-colors duration-300">
-                <svg
-                  className="w-7 h-7 text-accent group-hover:text-white transition-colors duration-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-white mb-3">For Talent</h2>
-              <p className="text-gray-300 group-hover:text-white/90 font-light text-sm leading-relaxed transition-colors">
-                Join our network of digital and tech professionals.
-              </p>
-              <div className="mt-6 inline-flex items-center gap-2 text-accent group-hover:text-white font-semibold text-sm transition-colors">
-                Join Network
-                <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to right, #2e2d3a 0%, #2e2d3aCC 10%, #2e2d3a88 25%, #2e2d3a33 45%, transparent 65%)' }}
+        />
+        {/* Top & bottom soft vignette */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #2e2d3a22 0%, transparent 20%, transparent 80%, #2e2d3a44 100%)' }} />
       </div>
+
     </section>
   );
 };

@@ -50,7 +50,7 @@ export default function ForTalentPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary pt-28 pb-20">
+      <section className="bg-primary pt-16 pb-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="max-w-3xl">
             <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
@@ -111,16 +111,18 @@ export default function ForTalentPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {[
+              'Cyber Security',
+              'Compliance & Risk',
+              'DevSecOps',
+              'Security Architecture',
+              'Portfolio Management',
+              'Change Management',
+              'PMO Leadership',
               'Performance Marketing',
-              'PPC & Paid Media',
               'Growth & Analytics',
-              'Software Engineering',
-              'Machine Learning',
-              'Data Engineering',
+              'PPC & Paid Media',
               'Product Management',
               'UX & Product Design',
-              'Engineering Management',
-              'AI & LLM',
             ].map((tag) => (
               <span
                 key={tag}

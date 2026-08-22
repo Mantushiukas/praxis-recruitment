@@ -95,6 +95,22 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .animate-spin-slow {
+    animation: spin 6s linear infinite;
+  }
+
+  .animate-spin-medium {
+    animation: spin 3s linear infinite;
+  }
+
+  .animate-spin-medium-reverse {
+    animation: spin 3s linear infinite reverse;
+  }
+
+  .animate-spin-slower {
+    animation: spin 4.5s linear infinite;
+  }
   
   /* Subtle background pattern */
   .bg-dots {

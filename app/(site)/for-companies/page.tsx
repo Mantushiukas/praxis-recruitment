@@ -14,7 +14,7 @@ export default function ForCompaniesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary pt-28 pb-20">
+      <section className="bg-primary pt-16 pb-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="max-w-3xl">
             <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">

@@ -14,14 +14,59 @@ export default async function AboutPage() {
 
   const headline = about?.headline ?? 'Built by Practitioners';
   const intro = about?.intro ?? 'Praxis Recruitment was founded to change how Digital and IT hiring works.';
-  const founders = about?.founders ?? [];
   const philosophyTitle = about?.philosophyTitle ?? 'Our Philosophy';
   const philosophyItems = about?.philosophyItems ?? [];
+
+  type DefaultFounder = {
+    name: string;
+    role: string;
+    title: string;
+    experienceHeading: string;
+    experienceItems: string[];
+    quote: string;
+    photoUrl: string | null;
+  };
+
+  const defaultFounders: DefaultFounder[] = [
+    {
+      name: 'Žygimantas Pocius',
+      role: 'Co-Founder',
+      title: 'Digital Marketer — 12+ Years Experience',
+      experienceHeading: 'Hands-on experience in:',
+      experienceItems: [
+        'Performance marketing',
+        'PPC strategy',
+        'Growth scaling',
+        'Analytics',
+        'Team development',
+      ],
+      quote: 'I evaluate candidates the way I would evaluate someone joining my own team.',
+      photoUrl: '/images/zygimantas.png',
+    },
+    {
+      name: 'Mantas Vaitekunas',
+      role: 'Co-Founder',
+      title: 'P3O Certified Transformation Leader — 15+ Years Experience',
+      experienceHeading: 'Hands-on experience in:',
+      experienceItems: [
+        'Change management & portfolio governance (P3O)',
+        'Cybersecurity & TPRM transformations',
+        'End-to-end project execution & roadmap planning',
+        'Security maturity assessments (NIST framework)',
+        'AI adoption & infrastructure implementation',
+      ],
+      quote: 'I evaluate candidates through the eyes of a certified practitioner who has led large-scale portfolio transformations and delivered critical change from the inside.',
+      photoUrl: null,
+    },
+  ];
+
+  const useSanityFounders = (about?.founders ?? []).length >= 2;
+  const sanityFounders = about?.founders ?? [];
 
   return (
     <main className="bg-white">
       {/* Hero */}
-      <section className="bg-primary pt-28 pb-20">
+      <section className="bg-primary pt-16 pb-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
             About Us
@@ -38,74 +83,81 @@ export default async function AboutPage() {
       </section>
 
       {/* Founders */}
-      {founders.length > 0 && (
-        <section className="py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {founders.map((founder, index) => (
-                <div
-                  key={index}
-                  className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  {/* Avatar / Photo */}
-                  <div className="flex items-center gap-4 mb-6">
-                    {founder.photo?.asset?.url ? (
-                      <Image
-                        src={founder.photo.asset.url}
-                        alt={founder.name ?? ''}
-                        width={64}
-                        height={64}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-accent/30"
-                      />
-                    ) : (
-                      <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl flex-shrink-0">
-                        {founder.name?.charAt(0) ?? '?'}
-                      </div>
-                    )}
-                    <div>
-                      <h2 className="text-xl font-bold text-primary">{founder.name}</h2>
-                      {founder.role && (
-                        <p className="text-accent font-semibold text-sm">{founder.role}</p>
-                      )}
-                      {founder.title && (
-                        <p className="text-gray-500 text-sm">{founder.title}</p>
-                      )}
-                    </div>
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {useSanityFounders ? sanityFounders.map((founder, index) => (
+              <div key={index} className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                {founder.photo?.asset?.url ? (
+                  <div className="relative w-full h-64 rounded-xl overflow-hidden mb-6">
+                    <Image src={founder.photo.asset.url} alt={founder.name ?? ''} fill className="object-cover object-top" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
-
-                  {/* Experience */}
-                  {(founder.experienceItems ?? []).length > 0 && (
-                    <div className="mb-6">
-                      {founder.experienceHeading && (
-                        <p className="text-sm font-semibold text-gray-600 mb-3">
-                          {founder.experienceHeading}
-                        </p>
-                      )}
-                      <ul className="space-y-2">
-                        {(founder.experienceItems ?? []).map((item, i) => (
-                          <li key={i} className="flex items-center gap-2 text-gray-700 text-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Quote */}
-                  {founder.quote && (
-                    <blockquote className="border-l-4 border-accent pl-4 mt-4">
-                      <p className="text-gray-600 italic text-sm leading-relaxed">
-                        &ldquo;{founder.quote}&rdquo;
-                      </p>
-                    </blockquote>
-                  )}
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl mb-6">
+                    {founder.name?.charAt(0) ?? '?'}
+                  </div>
+                )}
+                <div className="mb-6">
+                  <h2 className="text-xl font-bold text-primary">{founder.name}</h2>
+                  {founder.role && <p className="text-accent font-semibold text-sm">{founder.role}</p>}
+                  {founder.title && <p className="text-gray-500 text-sm mt-0.5">{founder.title}</p>}
                 </div>
-              ))}
-            </div>
+                {(founder.experienceItems ?? []).length > 0 && (
+                  <div className="mb-6">
+                    {founder.experienceHeading && <p className="text-sm font-semibold text-gray-600 mb-3">{founder.experienceHeading}</p>}
+                    <ul className="space-y-2">
+                      {(founder.experienceItems ?? []).map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-gray-700 text-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />{item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {founder.quote && (
+                  <blockquote className="border-l-4 border-accent pl-4 mt-4">
+                    <p className="text-gray-600 italic text-sm leading-relaxed">&ldquo;{founder.quote}&rdquo;</p>
+                  </blockquote>
+                )}
+              </div>
+            )) : defaultFounders.map((founder, index) => (
+              <div key={index} className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                {founder.photoUrl ? (
+                  <div className="relative w-full h-64 rounded-xl overflow-hidden mb-6">
+                    <Image src={founder.photoUrl} alt={founder.name} fill className="object-cover object-top" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  </div>
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl mb-6">
+                    {founder.name.charAt(0)}
+                  </div>
+                )}
+                <div className="mb-6">
+                  <h2 className="text-xl font-bold text-primary">{founder.name}</h2>
+                  <p className="text-accent font-semibold text-sm">{founder.role}</p>
+                  <p className="text-gray-500 text-sm mt-0.5">{founder.title}</p>
+                </div>
+                {founder.experienceItems.length > 0 && (
+                  <div className="mb-6">
+                    <p className="text-sm font-semibold text-gray-600 mb-3">{founder.experienceHeading}</p>
+                    <ul className="space-y-2">
+                      {founder.experienceItems.map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-gray-700 text-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />{item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <blockquote className="border-l-4 border-accent pl-4 mt-4">
+                  <p className="text-gray-600 italic text-sm leading-relaxed">&ldquo;{founder.quote}&rdquo;</p>
+                </blockquote>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* Philosophy */}
       {philosophyItems.length > 0 && (
