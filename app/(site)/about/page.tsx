@@ -25,6 +25,7 @@ export default async function AboutPage() {
     experienceItems: string[];
     quote: string;
     photoUrl: string | null;
+    email: string;
   };
 
   const defaultFounders: DefaultFounder[] = [
@@ -32,16 +33,18 @@ export default async function AboutPage() {
       name: 'Žygimantas Pocius',
       role: 'Co-Founder',
       title: 'Digital Marketer — 12+ Years Experience',
-      experienceHeading: 'Hands-on experience in:',
+      experienceHeading: 'Fields I recruit in:',
       experienceItems: [
-        'Performance marketing',
-        'PPC strategy',
-        'Growth scaling',
-        'Analytics',
-        'Team development',
+        'Digital Marketing',
+        'Performance Marketing',
+        'Paid Media & Social Media',
+        'Growth & User Acquisition',
+        'E-commerce',
+        'SEO & Content Marketing',
       ],
-      quote: 'I evaluate candidates the way I would evaluate someone joining my own team.',
+      quote: 'With 12+ years of hands-on experience in digital marketing, specialising in Performance Marketing, Paid Media, Social Media and Digital Strategy, I bring a practitioner\'s perspective to recruitment. At Praxis Recruitment, I help companies identify and hire exceptional Digital Marketing talent — from Specialists and Managers to Leads and Heads of Marketing.',
       photoUrl: '/images/zygimantas.png',
+      email: 'zygimantas@praxisrecruitment.eu',
     },
     {
       name: 'Mantas Vaitekunas',
@@ -55,25 +58,30 @@ export default async function AboutPage() {
         'Security maturity assessments (NIST framework)',
         'AI adoption & infrastructure implementation',
       ],
-      quote: 'I evaluate candidates through the eyes of a certified practitioner who has led large-scale portfolio transformations and delivered critical change from the inside.',
+      quote: 'Having spent 15+ years in the trenches leading major change transformations across IT, telecom, and security, I instantly know the difference between someone who talks governance and change delivery, and someone who actually executes it.',
       photoUrl: '/images/mantas.png',
+      email: 'mantas@praxisrecruitment.eu',
     },
   ];
 
-  // Local photo fallbacks keyed by first name
+  // Local fallbacks keyed by first name
   const localPhotos: Record<string, string> = {
     'Žygimantas': '/images/zygimantas.png',
     'Mantas': '/images/mantas.png',
   };
 
-  const useSanityFounders = (about?.founders ?? []).length >= 2;
+  const localEmails: Record<string, string> = {
+    'Žygimantas': 'zygimantas@praxisrecruitment.eu',
+    'Mantas': 'mantas@praxisrecruitment.eu',
+  };
+
+  const useSanityFounders = false;
   const sanityFounders = (about?.founders ?? []).map((f) => {
-    if (f.photo?.asset?.url) return f;
     const firstName = f.name?.split(' ')[0] ?? '';
-    const localPhoto = localPhotos[firstName];
-    return localPhoto
-      ? { ...f, photo: { asset: { url: localPhoto } } }
-      : f;
+    const withPhoto = f.photo?.asset?.url
+      ? f
+      : { ...f, photo: { asset: { url: localPhotos[firstName] ?? null } } };
+    return { ...withPhoto, _email: localEmails[firstName] ?? '' };
   });
 
   const founderCard = (
@@ -84,7 +92,8 @@ export default async function AboutPage() {
     experienceItems: string[],
     quote: string,
     photoSrc: string | null | undefined,
-    index: number
+    index: number,
+    email?: string
   ) => (
     <div key={index} className="bg-[#1c1b26] rounded-2xl overflow-hidden shadow-xl flex flex-col group hover:shadow-accent/20 transition-shadow duration-300">
       {/* Photo */}
@@ -110,6 +119,17 @@ export default async function AboutPage() {
           <h2 className="text-xl font-bold text-white">{name}</h2>
           <p className="text-accent font-semibold text-sm mt-0.5">{role}</p>
           <p className="text-gray-400 text-sm mt-1">{title}</p>
+          {email && (
+            <a
+              href={`mailto:${email}`}
+              className="inline-flex items-center gap-1.5 text-gray-500 hover:text-accent transition-colors text-sm mt-2"
+            >
+              <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              {email}
+            </a>
+          )}
         </div>
 
         {experienceItems.length > 0 && (
@@ -129,11 +149,8 @@ export default async function AboutPage() {
         )}
 
         {quote && (
-          <div className="mt-6 pt-6 border-t border-white/10">
-            <svg className="w-8 h-8 text-accent/40 mb-2" fill="currentColor" viewBox="0 0 32 32">
-              <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm18 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z" />
-            </svg>
-            <p className="text-gray-300 italic text-sm leading-relaxed">{quote}</p>
+          <div className="mt-6 border-l-2 border-accent/50 pl-4">
+            <p className="text-gray-400 italic text-sm leading-relaxed">{quote}</p>
           </div>
         )}
       </div>
@@ -143,7 +160,7 @@ export default async function AboutPage() {
   return (
     <main className="bg-[#16161F]">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-primary to-[#16161F] pt-16 pb-14">
+      <section className="bg-[#23232F] border-b border-white/5 pt-16 pb-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
             About Us
@@ -177,11 +194,12 @@ export default async function AboutPage() {
                     f.experienceItems ?? [],
                     f.quote ?? '',
                     f.photo?.asset?.url,
-                    i
+                    i,
+                    f._email
                   )
                 )
               : defaultFounders.map((f, i) =>
-                  founderCard(f.name, f.role, f.title, f.experienceHeading, f.experienceItems, f.quote, f.photoUrl, i)
+                  founderCard(f.name, f.role, f.title, f.experienceHeading, f.experienceItems, f.quote, f.photoUrl, i, f.email)
                 )}
           </div>
         </div>
