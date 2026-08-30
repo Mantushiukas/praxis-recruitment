@@ -7,7 +7,7 @@ interface LogoProps {
 }
 
 export const Logo = ({ variant = 'header', className = '' }: LogoProps) => {
-  const maxHeight = variant === 'header' ? 48 : 40;
+  const maxHeight = variant === 'header' ? 62 : 40;
   const width = Math.round(maxHeight * 1.7);
 
   return (

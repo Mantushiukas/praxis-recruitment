@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm overflow-visible transition-all">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 overflow-visible">
+        <div className="flex justify-between items-center h-20 overflow-visible">
           {/* Logo */}
           <Logo variant="header" />
 
@@ -28,7 +28,7 @@ export const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-accent transition-all font-semibold relative group"
+                className="text-gray-700 hover:text-accent transition-all font-semibold relative group text-[15px]"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full"></span>
@@ -38,7 +38,7 @@ export const Header = () => {
             {/* CTA Button */}
             <Link
               href="/contact"
-              className="bg-accent hover:bg-accent-600 text-white px-6 py-2 rounded-xl font-semibold text-sm transition-all hover:shadow-lg hover:scale-105"
+              className="bg-accent hover:bg-accent-600 text-white px-7 py-2.5 rounded-xl font-semibold text-[15px] transition-all hover:shadow-lg hover:scale-105"
             >
               Book a Call
             </Link>
