@@ -50,7 +50,7 @@ export default function ForCompaniesPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {[
-              { value: '12+', label: 'Years combined industry experience' },
+              { value: '27+', label: 'Years combined industry experience' },
               { value: '100%', label: 'Roles assessed by practitioners' },
               { value: 'EU', label: 'Coverage across European markets' },
             ].map((stat) => (

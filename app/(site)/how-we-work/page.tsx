@@ -55,7 +55,7 @@ export default async function HowWeWorkPage() {
   const data = await getProcessPage();
 
   const headline = data?.headline ?? 'How We Work';
-  const intro = data?.intro ?? 'Hiring Digital and IT professionals requires structure — and insight.';
+  const intro = data?.intro ?? 'Hiring Digital Marketing and IT Security professionals requires structure — and insight.';
   const steps = (data?.steps ?? []).length > 0 ? (data?.steps ?? []) : defaultSteps;
 
   return (

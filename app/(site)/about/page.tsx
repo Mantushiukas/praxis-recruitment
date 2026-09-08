@@ -15,7 +15,9 @@ export default async function AboutPage() {
   const headline = about?.headline ?? 'Built by Practitioners';
   const intro = about?.intro ?? 'Praxis Recruitment was founded to change how Digital and IT hiring works.';
   const philosophyTitle = about?.philosophyTitle ?? 'Our Philosophy';
-  const philosophyItems = about?.philosophyItems ?? [];
+  const philosophyItems = (about?.philosophyItems ?? []).map((line) =>
+    line.replace('Digital and IT talent requires', 'Digital Marketing and IT Security talent requires')
+  );
 
   type DefaultFounder = {
     name: string;
@@ -23,6 +25,7 @@ export default async function AboutPage() {
     title: string;
     experienceHeading: string;
     experienceItems: string[];
+    seniorityLevels: string[];
     quote: string;
     photoUrl: string | null;
     email: string;
@@ -42,22 +45,25 @@ export default async function AboutPage() {
         'E-commerce',
         'SEO & Content Marketing',
       ],
+      seniorityLevels: ['Specialists', 'Managers', 'Leads', 'Heads'],
       quote: 'With 12+ years of hands-on experience in digital marketing, specialising in Performance Marketing, Paid Media, Social Media and Digital Strategy, I bring a practitioner\'s perspective to recruitment. At Praxis Recruitment, I help companies identify and hire exceptional Digital Marketing talent — from Specialists and Managers to Leads and Heads of Marketing.',
       photoUrl: '/images/zygimantas.png',
       email: 'zygimantas@praxisrecruitment.eu',
     },
     {
-      name: 'Mantas Vaitekunas',
+      name: 'Mantas Vaitekūnas',
       role: 'Co-Founder',
       title: 'P3O Certified Transformation Leader — 15+ Years Experience',
-      experienceHeading: 'Hands-on experience in:',
+      experienceHeading: 'Fields I recruit in:',
       experienceItems: [
-        'Change management & portfolio governance (P3O)',
-        'Cybersecurity & TPRM transformations',
-        'End-to-end project execution & roadmap planning',
-        'Security maturity assessments (NIST framework)',
-        'AI adoption & infrastructure implementation',
+        'Change Management & Adoption',
+        'Cyber Security & Compliance',
+        'Business & Digital Transformation',
+        'AI, Data & Analytics',
+        'Technology & Software Engineering',
+        'Programme, Project & Portfolio Management',
       ],
+      seniorityLevels: ['Specialists', 'Managers', 'Leads', 'Heads'],
       quote: 'Having spent 15+ years in the trenches leading major change transformations across IT, telecom, and security, I instantly know the difference between someone who talks governance and change delivery, and someone who actually executes it.',
       photoUrl: '/images/mantas.png',
       email: 'mantas@praxisrecruitment.eu',
@@ -90,40 +96,50 @@ export default async function AboutPage() {
     title: string,
     experienceHeading: string,
     experienceItems: string[],
+    seniorityLevels: string[],
     quote: string,
     photoSrc: string | null | undefined,
     index: number,
     email?: string
   ) => (
-    <div key={index} className="bg-[#1c1b26] rounded-2xl overflow-hidden shadow-xl flex flex-col group hover:shadow-accent/20 transition-shadow duration-300">
-      {/* Photo */}
-      {photoSrc ? (
-        <div className="relative w-full h-80 overflow-hidden">
-          <Image
-            src={photoSrc}
-            alt={name}
-            fill
-            className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1c1b26] via-[#1c1b26]/20 to-transparent" />
-        </div>
-      ) : (
-        <div className="w-full h-80 bg-accent/10 flex items-center justify-center text-accent font-bold text-4xl">
-          {name.charAt(0)}
-        </div>
-      )}
+    <div key={index} className="bg-[#1c1b26] rounded-2xl overflow-hidden shadow-xl flex flex-col sm:flex-row group hover:shadow-accent/20 transition-shadow duration-300">
 
-      {/* Content */}
-      <div className="p-8 flex flex-col flex-1">
+      {/* Photo — left column, full height */}
+      <div className="relative sm:w-[38%] h-64 sm:h-auto flex-shrink-0 overflow-hidden">
+        {photoSrc ? (
+          <>
+            <Image
+              src={photoSrc}
+              alt={name}
+              fill
+              className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+            />
+            {/* Gradient right-edge fade into card */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#1c1b26] hidden sm:block" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1c1b26] via-transparent to-transparent sm:hidden" />
+          </>
+        ) : (
+          <div className="w-full h-full bg-accent/10 flex items-center justify-center text-accent font-bold text-5xl">
+            {name.charAt(0)}
+          </div>
+        )}
+      </div>
+
+      {/* Content — right column */}
+      <div className="flex flex-col flex-1 p-7">
+
+        {/* Name / role / title / email */}
         <div className="mb-5">
           <h2 className="text-xl font-bold text-white">{name}</h2>
           <p className="text-accent font-semibold text-sm mt-0.5">{role}</p>
-          <p className="text-gray-400 text-sm mt-1">{title}</p>
+          <div className="flex items-center gap-2 mt-2">
+            <svg className="w-3.5 h-3.5 text-gray-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <p className="text-gray-400 text-sm">{title}</p>
+          </div>
           {email && (
-            <a
-              href={`mailto:${email}`}
-              className="inline-flex items-center gap-1.5 text-gray-500 hover:text-accent transition-colors text-sm mt-2"
-            >
+            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 text-gray-500 hover:text-accent transition-colors text-sm mt-1.5">
               <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
@@ -132,13 +148,14 @@ export default async function AboutPage() {
           )}
         </div>
 
+        {/* Fields list — 2 columns */}
         {experienceItems.length > 0 && (
-          <div className="mb-6">
+          <div className="mb-5">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">{experienceHeading}</p>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 items-start">
               {experienceItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-gray-300 text-sm">
-                  <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
+                  <svg className="w-3.5 h-3.5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                   {item}
@@ -148,8 +165,28 @@ export default async function AboutPage() {
           </div>
         )}
 
+        {/* Seniority ladder */}
+        {seniorityLevels.length > 0 && (
+          <div className="mb-5">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Seniority levels we hire at:</p>
+            <div className="flex flex-wrap items-center gap-2">
+              {seniorityLevels.map((level, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full border border-accent/20">{level}</span>
+                  {i < seniorityLevels.length - 1 && (
+                    <svg className="w-3 h-3 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Quote */}
         {quote && (
-          <div className="mt-6 border-l-2 border-accent/50 pl-4">
+          <div className="mt-auto border-l-2 border-accent/40 pl-4 pt-4">
             <p className="text-gray-400 italic text-sm leading-relaxed">{quote}</p>
           </div>
         )}
@@ -180,10 +217,14 @@ export default async function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">The Team</p>
-            <h2 className="text-3xl font-bold text-white tracking-tight">Meet the Founders</h2>
+            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">About Praxis</p>
+            <h2 className="text-3xl font-bold text-white tracking-tight mb-4">Meet the Founders</h2>
+            <p className="text-gray-400 font-light max-w-xl mx-auto">
+              We&apos;ve worked in digital marketing and IT security for over 27 years combined.
+              Now we use that experience to connect great companies with exceptional talent.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-8">
             {useSanityFounders
               ? sanityFounders.map((f, i) =>
                   founderCard(
@@ -192,6 +233,7 @@ export default async function AboutPage() {
                     f.title ?? '',
                     f.experienceHeading ?? 'Hands-on experience in:',
                     f.experienceItems ?? [],
+                    ['Specialists', 'Managers', 'Leads', 'Heads'],
                     f.quote ?? '',
                     f.photo?.asset?.url,
                     i,
@@ -199,7 +241,7 @@ export default async function AboutPage() {
                   )
                 )
               : defaultFounders.map((f, i) =>
-                  founderCard(f.name, f.role, f.title, f.experienceHeading, f.experienceItems, f.quote, f.photoUrl, i, f.email)
+                  founderCard(f.name, f.role, f.title, f.experienceHeading, f.experienceItems, f.seniorityLevels, f.quote, f.photoUrl, i, f.email)
                 )}
           </div>
         </div>

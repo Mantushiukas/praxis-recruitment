@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Logo } from './Logo';
 import { useHomepageContent } from '@/contexts/HomepageContentContext';
@@ -7,7 +8,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getLocalized } from '@/types/sanity';
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear(); // suppressHydrationWarning handles any SSR/client mismatch
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
+  useEffect(() => { setCurrentYear(new Date().getFullYear()); }, []);
   const content = useHomepageContent();
   const { locale } = useLanguage();
   const s = content?.siteSettings;

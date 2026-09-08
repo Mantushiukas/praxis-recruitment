@@ -57,10 +57,10 @@ export default function ForTalentPage() {
               For Talent
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
-              Work with recruiters who understand your field
+              Work with recruiters who&apos;ve actually done the job
             </h1>
             <p className="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-2xl">
-              We build long-term relationships with digital and tech professionals — so when the right role comes along, we already know you.
+              We&apos;re not just recruiters. We come from digital marketing and IT security — so we understand the roles, the skills and what makes a great fit.
             </p>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function ForTalentPage() {
               A different kind of recruitment experience
             </h2>
             <p className="text-lg text-gray-500 font-light max-w-xl mx-auto">
-              We are not a CV board. We are a network of people who take their work seriously.
+              We&apos;re not a CV board. We&apos;re people who understand your work, value your experience, and take your next career move seriously.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -111,18 +111,18 @@ export default function ForTalentPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              'Cyber Security',
-              'Compliance & Risk',
-              'DevSecOps',
-              'Security Architecture',
-              'Portfolio Management',
-              'Change Management',
-              'PMO Leadership',
+              'Digital Marketing',
               'Performance Marketing',
-              'Growth & Analytics',
-              'PPC & Paid Media',
-              'Product Management',
-              'UX & Product Design',
+              'Paid Media & Social Media',
+              'Growth & User Acquisition',
+              'E-commerce',
+              'SEO & Content Marketing',
+              'Change Management & Adoption',
+              'Cyber Security & Compliance',
+              'Business & Digital Transformation',
+              'AI, Data & Analytics',
+              'Technology & Software Engineering',
+              'Programme, Project & Portfolio Management',
             ].map((tag) => (
               <span
                 key={tag}

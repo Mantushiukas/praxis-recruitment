@@ -96,6 +96,15 @@
     text-wrap: balance;
   }
 
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+
   .animate-spin-slow {
     animation: spin 6s linear infinite;
   }
