@@ -55,92 +55,93 @@ export default async function HowWeWorkPage() {
   const data = await getProcessPage();
 
   const headline = data?.headline ?? 'How We Work';
-  const intro = data?.intro ?? 'Hiring Digital Marketing and IT Security professionals requires structure — and insight.';
-  const steps = (data?.steps ?? []).length > 0 ? (data?.steps ?? []) : defaultSteps;
+  const intro    = data?.intro    ?? 'Hiring Digital Marketing and IT Security professionals requires structure — and insight.';
+  const steps    = (data?.steps ?? []).length > 0 ? (data?.steps ?? []) : defaultSteps;
 
   return (
     <main className="bg-white">
+
       {/* Hero */}
-      <section className="bg-primary pt-16 pb-14">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4 text-center">
-            Our Process
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
-            {headline}
-          </h1>
-          {intro && (
-            <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed text-center">
-              {intro}
-            </p>
-          )}
+      <section className="bg-[#16161F] pt-20 pb-24">
+        <div className="site-container">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-5">Our Process</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tightest leading-[1.02] mb-6">
+              {headline}
+            </h1>
+            {intro && (
+              <p className="text-lg text-gray-400 font-light leading-relaxed max-w-lg">
+                {intro}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
       {/* Steps */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <div className="relative">
-            {/* Vertical line */}
-            <div
-              className="absolute left-6 top-0 bottom-0 w-px bg-accent/20 hidden md:block"
-              aria-hidden="true"
-            />
+      <section className="section-gap border-t border-black/[0.06]">
+        <div className="site-container">
+          <div className="max-w-2xl">
+            {steps.map((step, index) => (
+              <div key={index} className="flex gap-10 pb-14 last:pb-0 relative">
 
-            <div className="space-y-12">
-              {steps.map((step, index) => (
-                <div key={index} className="relative flex gap-8">
-                  {/* Step number bubble */}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent text-white font-bold text-lg flex items-center justify-center z-10 shadow-md">
-                    {step.stepNumber ?? index + 1}
-                  </div>
+                {/* Connector line */}
+                {index < steps.length - 1 && (
+                  <div className="absolute left-[19px] top-10 bottom-0 w-px bg-black/[0.07]" aria-hidden="true" />
+                )}
 
-                  {/* Content */}
-                  <div className="pb-2 flex-1">
-                    <h2 className="text-xl md:text-2xl font-bold text-primary mb-2 tracking-tight">
-                      {step.title}
-                    </h2>
-                    {step.description && (
-                      <p className="text-gray-500 font-light leading-relaxed mb-3">
-                        {step.description}
-                      </p>
-                    )}
-                    {(step.items ?? []).length > 0 && (
-                      <ul className="space-y-2">
-                        {(step.items ?? []).map((item, i) => (
-                          <li key={i} className="flex items-center gap-2 text-gray-600 text-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" aria-hidden="true" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
+                {/* Number */}
+                <div className="flex-shrink-0 w-10 h-10 rounded-full border border-accent/30 text-accent flex items-center justify-center text-xs font-bold tracking-wide z-10 bg-white">
+                  {String(step.stepNumber ?? index + 1).padStart(2, '0')}
                 </div>
-              ))}
-            </div>
+
+                {/* Content */}
+                <div className="pt-1.5">
+                  <h2 className="text-xl font-semibold text-primary mb-2 tracking-tight">
+                    {step.title}
+                  </h2>
+                  {step.description && (
+                    <p className="text-gray-500 font-light leading-relaxed text-base mb-3">
+                      {step.description}
+                    </p>
+                  )}
+                  {(step.items ?? []).length > 0 && (
+                    <ul className="space-y-1.5 mt-3">
+                      {(step.items ?? []).map((item, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm text-gray-500 font-light">
+                          <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0 mt-2" aria-hidden="true" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gray-50 border-t border-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary tracking-tight mb-4">
-            Ready to start?
-          </h2>
-          <p className="text-gray-500 font-light mb-8">
-            Tell us about your role. We will get back to you within 24 hours.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:shadow-lg hover:scale-105"
-          >
-            Get in Touch
-            <span>→</span>
-          </Link>
+      <section className="section-gap-sm bg-[#16161F] border-t border-white/[0.06]">
+        <div className="site-container">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-bold text-white tracking-tight mb-1">
+                Ready to start?
+              </h2>
+              <p className="text-gray-400 font-light text-sm">
+                Tell us about your role. We will get back to you within 24 hours.
+              </p>
+            </div>
+            <Link href="/contact" className="btn-primary px-7 py-3.5 flex-shrink-0">
+              Get in Touch <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
+
     </main>
   );
 }

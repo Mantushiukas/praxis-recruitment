@@ -14,30 +14,21 @@ export default function ForCompaniesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary pt-16 pb-14">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="max-w-3xl">
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-              For Companies
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
+      <section className="bg-[#16161F] pt-20 pb-24">
+        <div className="site-container">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-5">For Companies</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tightest leading-[1.02] mb-6">
               Build your digital and tech team — with confidence
             </h1>
-            <p className="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-2xl">
+            <p className="text-lg text-gray-400 font-light leading-relaxed mb-10 max-w-lg">
               Praxis recruits marketing, technology, and product specialists for companies that cannot afford to hire the wrong person.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:shadow-lg hover:scale-105"
-              >
-                Start Hiring
-                <span>→</span>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/contact" className="btn-primary px-7 py-3.5">
+                Start Hiring <span aria-hidden="true">→</span>
               </Link>
-              <Link
-                href="/how-we-work"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white text-white font-semibold px-8 py-4 rounded-xl transition-all"
-              >
+              <Link href="/how-we-work" className="btn-ghost-dark px-7 py-3.5">
                 How We Work
               </Link>
             </div>
@@ -45,14 +36,14 @@ export default function ForCompaniesPage() {
         </div>
       </section>
 
-      {/* Stats row */}
-      <div className="bg-gray-50 border-b border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+      {/* Stats */}
+      <div className="bg-[#16161F] border-t border-white/[0.06]">
+        <div className="site-container py-12">
+          <div className="grid grid-cols-3 gap-8 max-w-lg">
             {[
-              { value: '27+', label: 'Years combined industry experience' },
-              { value: '100%', label: 'Roles assessed by practitioners' },
-              { value: 'EU', label: 'Coverage across European markets' },
+              { value: '27+', label: 'Years combined experience' },
+              { value: '100%', label: 'Practitioner-assessed roles' },
+              { value: 'EU', label: 'European market coverage' },
             ].map((stat) => (
               <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
             ))}
@@ -60,7 +51,7 @@ export default function ForCompaniesPage() {
         </div>
       </div>
 
-      {/* What we recruit */}
+      {/* Specialisations */}
       <WhatWeRecruit />
 
       {/* Why Praxis */}
@@ -70,21 +61,20 @@ export default function ForCompaniesPage() {
       <ProcessInline />
 
       {/* CTA */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tight mb-6">
-            Ready to find your next hire?
-          </h2>
-          <p className="text-gray-500 font-light text-lg mb-10">
-            Tell us about the role. We will come back to you within 24 hours with an honest assessment of how we can help.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:shadow-lg hover:scale-105"
-          >
-            Get in Touch
-            <span>→</span>
-          </Link>
+      <section className="section-gap bg-white border-t border-black/[0.06]">
+        <div className="site-container">
+          <div className="max-w-xl">
+            <p className="eyebrow mb-4">Get Started</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tighter mb-4">
+              Ready to find your next hire?
+            </h2>
+            <p className="text-gray-500 font-light text-base leading-relaxed mb-8">
+              Tell us about the role. We will come back to you within 24 hours with an honest assessment of how we can help.
+            </p>
+            <Link href="/contact" className="btn-primary px-7 py-3.5">
+              Get in Touch <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
     </>

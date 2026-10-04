@@ -2,102 +2,121 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .animate-fadeIn {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-  
-  .animate-slideUp {
-    animation: slideUp 0.6s ease-out forwards;
-  }
-  
-  .animate-scaleIn {
-    animation: scaleIn 0.5s ease-out forwards;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-}
-
+/* ─── Design Tokens ──────────────────────────────────────────── */
 :root {
-  /* Brand colors */
-  --color-primary: #23232F;
-  --color-accent: #7756B5;
-  --color-accent-light: #b09ae0;
-  
-  /* Text colors */
-  --color-text-primary: #23232F;
-  --color-text-secondary: #6B7280;
-  
-  /* Backgrounds */
-  --color-bg-primary: #ffffff;
-  --color-bg-dark: #23232F;
-  
-  /* Borders */
-  --color-border-light: #E5E7EB;
-  --color-border-medium: #D1D5DB;
+  --color-primary:       #23232F;
+  --color-accent:        #7756B5;
+  --color-accent-light:  #b09ae0;
+  --color-bg-dark:       #16161F;
+  --color-bg-darker:     #0f0f18;
+  --color-surface-dark:  #1e1d2b;
+  --color-border-light:  rgba(0,0,0,0.07);
+  --color-border-dark:   rgba(255,255,255,0.07);
+  --container-max:       72rem;       /* 1152px — controlled, not too wide */
+  --section-gap:         6rem;        /* py-24 */
+  --section-gap-sm:      4rem;        /* py-16 */
 }
 
+/* ─── Base ───────────────────────────────────────────────────── */
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply text-primary bg-white;
     font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: 1rem;
+    line-height: 1.65;
     letter-spacing: -0.01em;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-primary font-bold;
+  /* ── Typography hierarchy ── */
+  h1 {
+    @apply font-bold tracking-tighter;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    @apply font-bold;
+    line-height: 1.15;
     letter-spacing: -0.03em;
   }
 
-  h1 {
-    letter-spacing: -0.04em;
+  h3 {
+    @apply font-semibold;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  h4, h5, h6 {
+    @apply font-semibold;
+    letter-spacing: -0.01em;
   }
 
   strong, b {
     font-weight: 700;
   }
+
+  p {
+    line-height: 1.7;
+  }
 }
 
+/* ─── Utility classes ────────────────────────────────────────── */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+
+  /* Consistent container for all pages */
+  .site-container {
+    @apply mx-auto px-6 sm:px-8 lg:px-12;
+    max-width: var(--container-max);
   }
 
+  /* Section spacings */
+  .section-gap   { padding-top: var(--section-gap);    padding-bottom: var(--section-gap); }
+  .section-gap-sm { padding-top: var(--section-gap-sm); padding-bottom: var(--section-gap-sm); }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply text-accent font-semibold text-xs uppercase tracking-widest;
+  }
+
+  /* Thin divider */
+  .rule-light { @apply border-t border-black/[0.07]; }
+  .rule-dark  { @apply border-t border-white/[0.07]; }
+
+  /* Premium card — no shadow, clean border */
+  .card {
+    @apply bg-white border border-black/[0.07] rounded-lg p-6;
+  }
+  .card-dark {
+    @apply bg-[#1e1d2b] border border-white/[0.07] rounded-lg p-6;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm px-6 py-3 rounded-md transition-all duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-600;
+  }
+  .btn-ghost-dark {
+    @apply btn border border-white/25 text-white hover:border-white hover:bg-white/5;
+  }
+  .btn-ghost-light {
+    @apply btn border border-black/15 text-primary hover:border-accent hover:text-accent;
+  }
+
+  /* Marquee */
   .animate-marquee {
-    animation: marquee 25s linear infinite;
+    animation: marquee 35s linear infinite;
   }
 
   @keyframes marquee {
@@ -105,38 +124,25 @@
     to   { transform: translateX(-100%); }
   }
 
-  .animate-spin-slow {
-    animation: spin 6s linear infinite;
+  /* Spin utilities for animated stats */
+  .animate-spin-slow    { animation: spin 6s linear infinite; }
+  .animate-spin-medium  { animation: spin 3s linear infinite; }
+  .animate-spin-medium-reverse { animation: spin 3s linear infinite reverse; }
+  .animate-spin-slower  { animation: spin 4.5s linear infinite; }
+
+  .text-balance { text-wrap: balance; }
+
+  /* Fade-in for entrance animations */
+  .animate-fadeIn  { animation: fadeIn  0.7s ease-out forwards; }
+  .animate-slideUp { animation: slideUp 0.6s ease-out forwards; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  .animate-spin-medium {
-    animation: spin 3s linear infinite;
-  }
-
-  .animate-spin-medium-reverse {
-    animation: spin 3s linear infinite reverse;
-  }
-
-  .animate-spin-slower {
-    animation: spin 4.5s linear infinite;
-  }
-  
-  /* Subtle background pattern */
-  .bg-dots {
-    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-  
-  .bg-grid {
-    background-image: linear-gradient(#f3f4f6 1px, transparent 1px),
-                      linear-gradient(90deg, #f3f4f6 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-}
-
-/* Smooth scroll behavior */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 }

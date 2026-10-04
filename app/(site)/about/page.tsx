@@ -96,13 +96,13 @@ export default async function AboutPage() {
     title: string,
     experienceHeading: string,
     experienceItems: string[],
-    seniorityLevels: string[],
+    seniorityLevels: string[] | null | undefined,
     quote: string,
     photoSrc: string | null | undefined,
     index: number,
     email?: string
   ) => (
-    <div key={index} className="bg-[#1c1b26] rounded-2xl overflow-hidden shadow-xl flex flex-col sm:flex-row group hover:shadow-accent/20 transition-shadow duration-300">
+    <div key={index} className="bg-[#1c1b26] border border-white/[0.07] overflow-hidden flex flex-col sm:flex-row group transition-colors duration-300 hover:border-white/[0.12]">
 
       {/* Photo — left column, full height */}
       <div className="relative sm:w-[38%] h-64 sm:h-auto flex-shrink-0 overflow-hidden">
@@ -166,14 +166,14 @@ export default async function AboutPage() {
         )}
 
         {/* Seniority ladder */}
-        {seniorityLevels.length > 0 && (
+        {(seniorityLevels ?? []).length > 0 && (
           <div className="mb-5">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Seniority levels we hire at:</p>
             <div className="flex flex-wrap items-center gap-2">
-              {seniorityLevels.map((level, i) => (
+              {(seniorityLevels ?? []).map((level, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <span className="bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full border border-accent/20">{level}</span>
-                  {i < seniorityLevels.length - 1 && (
+                  {i < (seniorityLevels ?? []).length - 1 && (
                     <svg className="w-3 h-3 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
@@ -197,34 +197,34 @@ export default async function AboutPage() {
   return (
     <main className="bg-[#16161F]">
       {/* Hero */}
-      <section className="bg-[#23232F] border-b border-white/5 pt-16 pb-14">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-            About Us
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">
-            {headline}
-          </h1>
-          {intro && (
-            <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
-              {intro}
-            </p>
-          )}
+      <section className="bg-[#16161F] pt-20 pb-24 border-b border-white/[0.06]">
+        <div className="site-container">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-5">About Us</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tightest leading-[1.02] mb-6">
+              {headline}
+            </h1>
+            {intro && (
+              <p className="text-lg text-gray-400 font-light leading-relaxed max-w-lg">
+                {intro}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
       {/* Founders */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="text-center mb-12">
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">About Praxis</p>
-            <h2 className="text-3xl font-bold text-white tracking-tight mb-4">Meet the Founders</h2>
-            <p className="text-gray-400 font-light max-w-xl mx-auto">
+      <section className="section-gap">
+        <div className="site-container">
+          <div className="mb-14">
+            <p className="eyebrow mb-3">About Praxis</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-3">Meet the Founders</h2>
+            <p className="text-gray-400 font-light max-w-lg leading-relaxed">
               We&apos;ve worked in digital marketing and IT security for over 27 years combined.
               Now we use that experience to connect great companies with exceptional talent.
             </p>
           </div>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
             {useSanityFounders
               ? sanityFounders.map((f, i) =>
                   founderCard(
@@ -249,45 +249,45 @@ export default async function AboutPage() {
 
       {/* Philosophy */}
       {philosophyItems.length > 0 && (
-        <section className="py-20 border-t border-white/5">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">Our Belief</p>
-            <h2 className="text-3xl font-bold text-white mb-10 tracking-tight">
-              {philosophyTitle}
-            </h2>
-            <ul className="space-y-5">
-              {philosophyItems.map((line, i) => (
-                <li key={i} className="text-lg text-gray-300 font-light leading-relaxed">
-                  {line}
-                </li>
-              ))}
-            </ul>
+        <section className="section-gap border-t border-white/[0.06]">
+          <div className="site-container">
+            <div className="max-w-xl">
+              <p className="eyebrow mb-4">Our Belief</p>
+              <h2 className="text-3xl font-bold text-white mb-8 tracking-tighter">
+                {philosophyTitle}
+              </h2>
+              <ul className="divide-y divide-white/[0.06]">
+                {philosophyItems.map((line, i) => (
+                  <li key={i} className="py-5 text-base text-gray-400 font-light leading-relaxed">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       )}
 
       {/* CTA */}
-      <section className="py-16 border-t border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-4">
-            Work with us
-          </h2>
-          <p className="text-gray-400 font-light mb-8">
-            Whether you are hiring or looking for your next role — we would like to hear from you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/for-companies"
-              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-accent/20"
-            >
-              Hire with Praxis
-            </a>
-            <a
-              href="/for-talent"
-              className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-accent hover:text-accent text-white font-semibold px-7 py-3.5 rounded-xl transition-all"
-            >
-              Join the Network
-            </a>
+      <section className="section-gap-sm border-t border-white/[0.06]">
+        <div className="site-container">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-bold text-white tracking-tight mb-1">
+                Work with us
+              </h2>
+              <p className="text-gray-400 font-light text-sm">
+                Whether you are hiring or looking for your next role — we would like to hear from you.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <a href="/for-companies" className="btn-primary px-7 py-3.5">
+                Hire with Praxis <span aria-hidden="true">→</span>
+              </a>
+              <a href="/for-talent" className="btn-ghost-dark px-7 py-3.5">
+                Join the Network
+              </a>
+            </div>
           </div>
         </div>
       </section>

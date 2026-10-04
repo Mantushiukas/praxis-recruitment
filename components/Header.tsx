@@ -2,112 +2,133 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Logo } from './Logo';
 
+const NAV = [
+  { name: 'For Companies', href: '/for-companies' },
+  { name: 'For Talent',    href: '/for-talent'    },
+  { name: 'How We Work',   href: '/how-we-work'   },
+  { name: 'About',         href: '/about'         },
+  { name: 'Contact',       href: '/contact'       },
+];
+
 export const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen]         = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname                = usePathname();
 
-  const navigation = [
-    { name: 'For Companies', href: '/for-companies' },
-    { name: 'For Talent', href: '/for-talent' },
-    { name: 'How We Work', href: '/how-we-work' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
-  // Prevent body scroll when menu is open
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [mobileMenuOpen]);
+    const handler = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
 
-  const handleClose = () => setMobileMenuOpen(false);
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  const handleClose = () => setOpen(false);
 
   return (
     <>
-      <header className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm transition-all">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+      {/* ── Desktop / tablet bar ── */}
+      <header className={`bg-white sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-[0_1px_0_rgba(0,0,0,0.08)]' : 'border-b border-black/[0.06]'}`}>
+        <div className="site-container">
+          <div className="flex items-center justify-between h-[72px]">
+
             {/* Logo */}
             <Logo variant="header" />
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-700 hover:text-accent transition-all font-semibold relative group text-[15px]"
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
-                </Link>
-              ))}
+            {/* Desktop nav */}
+            <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+              {NAV.map((item) => {
+                const active = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`relative px-3 py-2 text-sm font-medium rounded transition-colors duration-150
+                      ${active
+                        ? 'text-primary'
+                        : 'text-gray-500 hover:text-primary'}`}
+                  >
+                    {item.name}
+                    {active && (
+                      <span className="absolute bottom-0 left-3 right-3 h-px bg-accent rounded-full" />
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
 
+            {/* CTA + hamburger */}
+            <div className="flex items-center gap-3">
               <Link
                 href="/contact"
-                className="bg-accent hover:bg-accent-600 text-white px-7 py-2.5 rounded-xl font-semibold text-[15px] transition-all hover:shadow-lg hover:scale-105"
+                className="hidden md:inline-flex btn-primary text-sm"
               >
                 Book a Call
               </Link>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              type="button"
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-accent transition-colors z-[60] relative"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+              <button
+                type="button"
+                onClick={() => setOpen(!open)}
+                aria-label={open ? 'Close menu' : 'Open menu'}
+                aria-expanded={open}
+                className="md:hidden p-2 -mr-1 text-gray-600 hover:text-primary transition-colors"
+              >
+                {open ? (
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
-        </nav>
+        </div>
       </header>
 
-      {/* Mobile Full-Screen Overlay */}
+      {/* ── Mobile full-screen overlay ── */}
       <div
-        className={`fixed inset-0 z-40 bg-[#16161F] flex flex-col transition-all duration-300 md:hidden ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 z-40 bg-[#16161F] flex flex-col md:hidden transition-all duration-300 ${
+          open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        aria-hidden={!mobileMenuOpen}
+        aria-hidden={!open}
       >
-        {/* Top bar with logo + close */}
-        <div className="flex items-center justify-between px-6 h-20 border-b border-white/10 flex-shrink-0">
+        {/* Top bar */}
+        <div className="flex items-center justify-between px-6 h-[72px] border-b border-white/[0.07]">
           <Logo variant="footer" />
           <button
             type="button"
             onClick={handleClose}
             aria-label="Close menu"
-            className="p-2 text-white/60 hover:text-white transition-colors"
+            className="p-2 text-white/50 hover:text-white transition-colors"
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        {/* Nav links */}
-        <nav className="flex flex-col justify-center flex-1 px-8 gap-2">
-          {navigation.map((item, i) => (
+        {/* Links */}
+        <nav className="flex flex-col flex-1 justify-center px-8 gap-0" aria-label="Mobile navigation">
+          {NAV.map((item, i) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={handleClose}
-              className="group flex items-center justify-between py-4 border-b border-white/5 text-2xl font-bold text-white/80 hover:text-white transition-all"
-              style={{ transitionDelay: mobileMenuOpen ? `${i * 50}ms` : '0ms' }}
+              className={`group flex items-center justify-between py-5 border-b border-white/[0.06] text-xl font-semibold transition-colors
+                ${pathname === item.href ? 'text-white' : 'text-white/60 hover:text-white'}`}
+              style={{ transitionDelay: open ? `${i * 40}ms` : '0ms' }}
             >
               {item.name}
-              <svg className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition-opacity -translate-x-1 group-hover:translate-x-0 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -116,15 +137,14 @@ export const Header = () => {
           <Link
             href="/contact"
             onClick={handleClose}
-            className="mt-8 bg-accent hover:bg-accent-600 text-white text-center font-bold text-lg px-8 py-4 rounded-xl transition-all hover:shadow-lg hover:shadow-accent/20"
+            className="mt-10 btn-primary justify-center py-4 text-base rounded-md"
           >
             Book a Call
           </Link>
         </nav>
 
-        {/* Footer note */}
-        <p className="text-center text-white/20 text-sm pb-8 px-6">
-          Praxis Recruitment — Built by Practitioners
+        <p className="text-center text-white/20 text-xs pb-8 px-6">
+          Praxis Recruitment
         </p>
       </div>
     </>
