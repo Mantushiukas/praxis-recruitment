@@ -136,7 +136,7 @@ export default async function AboutPage() {
             <svg className="w-3.5 h-3.5 text-gray-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <p className="text-gray-400 text-sm">{title}</p>
+            <p className="text-gray-200 text-sm">{title}</p>
           </div>
           {email && (
             <a href={`mailto:${email}`} className="inline-flex items-center gap-2 text-gray-500 hover:text-accent transition-colors text-sm mt-1.5">
@@ -154,7 +154,7 @@ export default async function AboutPage() {
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">{experienceHeading}</p>
             <ul className="grid grid-cols-2 gap-x-6 gap-y-2 items-start">
               {experienceItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
+                <li key={i} className="flex items-start gap-2 text-white text-sm">
                   <svg className="w-3.5 h-3.5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
@@ -187,7 +187,7 @@ export default async function AboutPage() {
         {/* Quote */}
         {quote && (
           <div className="mt-auto border-l-2 border-accent/40 pl-4 pt-4">
-            <p className="text-gray-400 italic text-sm leading-relaxed">{quote}</p>
+              <p className="text-gray-200 italic text-sm leading-relaxed">{quote}</p>
           </div>
         )}
       </div>
@@ -195,7 +195,7 @@ export default async function AboutPage() {
   );
 
   return (
-    <main className="bg-[#16161F]">
+    <main className="bg-white">
       {/* Hero */}
       <section className="bg-[#16161F] pt-20 pb-24 border-b border-white/[0.06]">
         <div className="site-container">
@@ -205,7 +205,7 @@ export default async function AboutPage() {
               {headline}
             </h1>
             {intro && (
-              <p className="text-lg text-gray-400 font-light leading-relaxed max-w-lg">
+              <p className="text-lg text-gray-200 font-light leading-relaxed max-w-lg">
                 {intro}
               </p>
             )}
@@ -213,13 +213,13 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Founders */}
-      <section className="section-gap">
+      {/* Founders — LIGHT */}
+      <section className="section-gap-sm bg-white border-t border-black/[0.06]">
         <div className="site-container">
           <div className="mb-14">
             <p className="eyebrow mb-3">About Praxis</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-3">Meet the Founders</h2>
-            <p className="text-gray-400 font-light max-w-lg leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tighter mb-3">Meet the Founders</h2>
+            <p className="text-gray-900 font-light max-w-lg leading-relaxed">
               We&apos;ve worked in digital marketing and IT security for over 27 years combined.
               Now we use that experience to connect great companies with exceptional talent.
             </p>
@@ -247,9 +247,9 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Philosophy */}
+      {/* Philosophy — DARK */}
       {philosophyItems.length > 0 && (
-        <section className="section-gap border-t border-white/[0.06]">
+        <section className="section-gap bg-[#16161F] border-t border-white/[0.06]">
           <div className="site-container">
             <div className="max-w-xl">
               <p className="eyebrow mb-4">Our Belief</p>
@@ -268,15 +268,15 @@ export default async function AboutPage() {
         </section>
       )}
 
-      {/* CTA */}
-      <section className="section-gap-sm border-t border-white/[0.06]">
+      {/* CTA — LIGHT */}
+      <section className="section-gap-sm bg-white border-t border-black/[0.06]">
         <div className="site-container">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
-              <h2 className="text-2xl font-bold text-white tracking-tight mb-1">
+              <h2 className="text-2xl font-bold text-primary tracking-tight mb-1">
                 Work with us
               </h2>
-              <p className="text-gray-400 font-light text-sm">
+              <p className="text-gray-900 font-light text-sm">
                 Whether you are hiring or looking for your next role — we would like to hear from you.
               </p>
             </div>

@@ -70,7 +70,7 @@ export default async function HowWeWorkPage() {
               {headline}
             </h1>
             {intro && (
-              <p className="text-lg text-gray-400 font-light leading-relaxed max-w-lg">
+              <p className="text-lg text-gray-200 font-light leading-relaxed max-w-lg">
                 {intro}
               </p>
             )}
@@ -101,14 +101,14 @@ export default async function HowWeWorkPage() {
                     {step.title}
                   </h2>
                   {step.description && (
-                    <p className="text-gray-500 font-light leading-relaxed text-base mb-3">
+                    <p className="text-gray-900 font-light leading-relaxed text-base mb-3">
                       {step.description}
                     </p>
                   )}
                   {(step.items ?? []).length > 0 && (
                     <ul className="space-y-1.5 mt-3">
                       {(step.items ?? []).map((item, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-gray-500 font-light">
+                        <li key={i} className="flex items-start gap-3 text-sm text-gray-900 font-light">
                           <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0 mt-2" aria-hidden="true" />
                           {item}
                         </li>
@@ -131,7 +131,7 @@ export default async function HowWeWorkPage() {
               <h2 className="text-2xl font-bold text-white tracking-tight mb-1">
                 Ready to start?
               </h2>
-              <p className="text-gray-400 font-light text-sm">
+              <p className="text-gray-200 font-light text-sm">
                 Tell us about your role. We will get back to you within 24 hours.
               </p>
             </div>

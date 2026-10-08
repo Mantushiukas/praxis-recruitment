@@ -52,7 +52,7 @@ export const ProcessInline = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter">
             Our Approach
           </h2>
-          <p className="mt-3 text-gray-400 font-light max-w-md leading-relaxed">
+          <p className="mt-3 text-gray-200 font-light max-w-md leading-relaxed">
             Structured hiring powered by practitioner insight.
           </p>
         </div>
@@ -74,7 +74,7 @@ export const ProcessInline = () => {
               <h3 className="text-sm font-semibold text-white mb-2.5 leading-snug tracking-tight">
                 {step.title}
               </h3>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
+              <p className="text-xs text-gray-200 font-light leading-relaxed">
                 {step.description}
               </p>
             </div>

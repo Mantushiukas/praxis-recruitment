@@ -52,7 +52,7 @@ export default function ForTalentPage() {
             <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tightest leading-[1.02] mb-6">
               Work with recruiters who&apos;ve actually done the job
             </h1>
-            <p className="text-lg text-gray-400 font-light leading-relaxed max-w-lg">
+            <p className="text-lg text-gray-200 font-light leading-relaxed max-w-lg">
               We&apos;re not just recruiters. We come from digital marketing and IT security — so we understand the roles, the skills and what makes a great fit.
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function ForTalentPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tighter mb-3">
               A different kind of recruitment experience
             </h2>
-            <p className="text-base text-gray-500 font-light max-w-lg leading-relaxed">
+            <p className="text-base text-gray-900 font-light max-w-lg leading-relaxed">
               We&apos;re not a CV board. We&apos;re people who understand your work, value your experience, and take your next career move seriously.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function ForTalentPage() {
                 <h3 className="text-base font-semibold text-primary mb-2 tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-500 font-light leading-relaxed">
+                <p className="text-sm text-gray-900 font-light leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -98,7 +98,7 @@ export default function ForTalentPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tighter mb-2">
               Fields we recruit in
             </h2>
-            <p className="text-gray-500 font-light text-sm">Roles where experience and depth matter.</p>
+            <p className="text-gray-200 font-light text-sm">Roles where experience and depth matter.</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {fields.map((tag) => (
@@ -122,10 +122,10 @@ export default function ForTalentPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tighter mb-4">
                 Join our network
               </h2>
-              <p className="text-gray-500 font-light text-base leading-relaxed mb-2">
+              <p className="text-gray-900 font-light text-base leading-relaxed mb-2">
                 Tell us who you are and what you are looking for. We will reach out when there is a relevant match.
               </p>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-700">
                 Or{' '}
                 <Link href="/jobs" className="text-accent hover:underline font-medium">
                   browse open roles

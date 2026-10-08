@@ -38,7 +38,7 @@ export default function ContactPage() {
                 <h2 className="text-sm font-semibold text-primary uppercase tracking-widest mb-5">Contact Details</h2>
                 <ul className="space-y-5">
                   <li>
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Email</p>
+                    <p className="text-xs text-gray-600 uppercase tracking-widest mb-1">Email</p>
                     <a
                       href="mailto:hello@praxisrecruitment.eu"
                       className="text-sm font-medium text-primary hover:text-accent transition-colors"
@@ -47,7 +47,7 @@ export default function ContactPage() {
                     </a>
                   </li>
                   <li>
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">LinkedIn</p>
+                    <p className="text-xs text-gray-600 uppercase tracking-widest mb-1">LinkedIn</p>
                     <a
                       href="https://www.linkedin.com"
                       target="_blank"
@@ -72,7 +72,7 @@ export default function ContactPage() {
                     'Initial consultation call at your convenience',
                     'No commitment required to discuss your needs',
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-gray-500 font-light">
+                    <li key={i} className="flex items-start gap-3 text-sm text-gray-900 font-light">
                       <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0 mt-2" />
                       {item}
                     </li>

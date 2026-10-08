@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { WhatWeRecruit } from '@/components/WhatWeRecruit';
 import { ExperienceWithBrands } from '@/components/ExperienceWithBrands';
 import { ProcessInline } from '@/components/ProcessInline';
-import { AnimatedStat } from '@/components/AnimatedStat';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -21,7 +20,7 @@ export default function ForCompaniesPage() {
             <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tightest leading-[1.02] mb-6">
               Build your digital and tech team — with confidence
             </h1>
-            <p className="text-lg text-gray-400 font-light leading-relaxed mb-10 max-w-lg">
+            <p className="text-lg text-gray-200 font-light leading-relaxed mb-10 max-w-lg">
               Praxis recruits marketing, technology, and product specialists for companies that cannot afford to hire the wrong person.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
@@ -36,31 +35,34 @@ export default function ForCompaniesPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <div className="bg-[#16161F] border-t border-white/[0.06]">
-        <div className="site-container py-12">
-          <div className="grid grid-cols-3 gap-8 max-w-lg">
+      {/* Stats — LIGHT */}
+      <div className="bg-white border-t border-black/[0.06]">
+        <div className="site-container py-16">
+          <div className="grid grid-cols-3 gap-8">
             {[
               { value: '27+', label: 'Years combined experience' },
               { value: '100%', label: 'Practitioner-assessed roles' },
               { value: 'EU', label: 'European market coverage' },
             ].map((stat) => (
-              <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
+              <div key={stat.label} className="flex flex-col items-center text-center">
+                <span className="text-5xl md:text-6xl font-bold text-accent mb-2">{stat.value}</span>
+                <span className="text-sm font-medium text-primary">{stat.label}</span>
+              </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Specialisations */}
-      <WhatWeRecruit />
+      {/* Specialisations — DARK */}
+      <WhatWeRecruit dark />
 
-      {/* Why Praxis */}
-      <ExperienceWithBrands />
+      {/* Why Praxis — LIGHT */}
+      <ExperienceWithBrands dark={false} />
 
-      {/* Process */}
+      {/* Process — DARK (default) */}
       <ProcessInline />
 
-      {/* CTA */}
+      {/* CTA — LIGHT */}
       <section className="section-gap bg-white border-t border-black/[0.06]">
         <div className="site-container">
           <div className="max-w-xl">
@@ -68,7 +70,7 @@ export default function ForCompaniesPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tighter mb-4">
               Ready to find your next hire?
             </h2>
-            <p className="text-gray-500 font-light text-base leading-relaxed mb-8">
+            <p className="text-gray-900 font-light text-base leading-relaxed mb-8">
               Tell us about the role. We will come back to you within 24 hours with an honest assessment of how we can help.
             </p>
             <Link href="/contact" className="btn-primary px-7 py-3.5">
