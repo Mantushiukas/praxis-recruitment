@@ -15,6 +15,40 @@ const parseTarget = (raw: string): { number: number; suffix: string } => {
   return { number: parseInt(match[1], 10), suffix: match[2] };
 };
 
+const Orbit = ({ spinning }: { spinning: boolean }) => {
+  const visibility = spinning ? 'opacity-100' : 'opacity-0';
+
+  return (
+    <div className="pointer-events-none absolute -inset-x-5 -inset-y-3" aria-hidden="true">
+      <svg
+        className={`absolute inset-0 h-full w-full transition-opacity duration-500 ${spinning ? 'animate-spin-slow opacity-100' : 'opacity-0'}`}
+        viewBox="0 0 120 72"
+        fill="none"
+      >
+        <ellipse
+          cx="60"
+          cy="36"
+          rx="56"
+          ry="30"
+          stroke="#7756B5"
+          strokeWidth="1.5"
+          strokeDasharray="6 4"
+          strokeOpacity="0.55"
+        />
+      </svg>
+      <div className={`absolute inset-0 transition-opacity duration-500 ${visibility} ${spinning ? 'animate-spin-medium' : ''}`}>
+        <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent" />
+      </div>
+      <div className={`absolute inset-0 transition-opacity duration-500 ${visibility} ${spinning ? 'animate-spin-medium-reverse' : ''}`}>
+        <span className="absolute bottom-0 left-1/4 h-1 w-1 rounded-full bg-accent/70" />
+      </div>
+      <div className={`absolute inset-0 transition-opacity duration-500 ${visibility} ${spinning ? 'animate-spin-slower' : ''}`}>
+        <span className="absolute right-1 top-1/3 h-1 w-1 rounded-full bg-accent/40" />
+      </div>
+    </div>
+  );
+};
+
 export const AnimatedStat = ({ value, label }: AnimatedStatProps) => {
   const { number: target, suffix } = parseTarget(value);
   const isNumeric = target > 0;
@@ -22,30 +56,40 @@ export const AnimatedStat = ({ value, label }: AnimatedStatProps) => {
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
   const [done, setDone] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Trigger on scroll into view
   useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!media.matches) return;
+    setReducedMotion(true);
+    setCount(target);
+    setDone(true);
+  }, [target]);
+
+  useEffect(() => {
+    if (reducedMotion) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started) setStarted(true);
+        if (entry.isIntersecting) setStarted(true);
       },
       { threshold: 0.4 },
     );
+
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [started]);
+  }, [reducedMotion]);
 
-  // Count-up for numeric stats
   useEffect(() => {
-    if (!started || !isNumeric) return;
+    if (!started || !isNumeric || reducedMotion) return;
 
     const steps = 60;
     const interval = DURATION / steps;
     let step = 0;
 
     const timer = setInterval(() => {
-      step++;
+      step += 1;
       const eased = 1 - Math.pow(1 - step / steps, 3);
       setCount(Math.round(eased * target));
       if (step >= steps) {
@@ -56,70 +100,28 @@ export const AnimatedStat = ({ value, label }: AnimatedStatProps) => {
     }, interval);
 
     return () => clearInterval(timer);
-  }, [started, target, isNumeric]);
+  }, [started, target, isNumeric, reducedMotion]);
 
-  // Stop spinner after count-up duration
   useEffect(() => {
-    if (!started || isNumeric) return;
-    const t = setTimeout(() => setDone(true), DURATION + 200);
-    return () => clearTimeout(t);
-  }, [started, isNumeric]);
+    if (!started || isNumeric || reducedMotion) return;
+    const timer = setTimeout(() => setDone(true), DURATION + 200);
+    return () => clearTimeout(timer);
+  }, [started, isNumeric, reducedMotion]);
 
-  // --- Non-numeric (EU) with orbit + stars ---
-  if (!isNumeric) {
-    const spinning = started && !done;
+  const display = isNumeric ? `${count}${suffix}` : value;
+  const spinning = started && !done && !isNumeric;
 
-    return (
-      <div ref={ref} className="text-center md:text-left">
-        <div className="relative inline-flex items-center justify-center mb-1 w-14 h-9">
-
-          {/* Orbit ring */}
-          <svg
-            className={`absolute inset-0 w-full h-full transition-opacity duration-400 ${spinning ? 'animate-spin-slow' : 'opacity-0'}`}
-            viewBox="0 0 56 36"
-            fill="none"
-            aria-hidden="true"
-          >
-            <ellipse
-              cx="28" cy="18"
-              rx="26" ry="10"
-              stroke="#7756B5"
-              strokeWidth="1.5"
-              strokeDasharray="6 4"
-              strokeOpacity="0.5"
-            />
-          </svg>
-
-          {/* Star 1 */}
-          <div
-            className={`absolute w-1.5 h-1.5 rounded-full bg-accent transition-opacity duration-400 ${spinning ? 'animate-spin-medium opacity-100' : 'opacity-0'}`}
-            style={{ top: '4px', left: '0px', transformOrigin: '28px 14px' }}
-          />
-          {/* Star 2 */}
-          <div
-            className={`absolute w-1 h-1 rounded-full bg-accent/60 transition-opacity duration-500 ${spinning ? 'animate-spin-medium-reverse opacity-100' : 'opacity-0'}`}
-            style={{ top: '22px', right: '2px', transformOrigin: '-18px -4px' }}
-          />
-          {/* Star 3 — tiny */}
-          <div
-            className={`absolute w-1 h-1 rounded-full bg-white/40 transition-opacity duration-600 ${spinning ? 'animate-spin-slower opacity-100' : 'opacity-0'}`}
-            style={{ top: '2px', right: '4px', transformOrigin: '-16px 16px' }}
-          />
-
-          <span className="text-3xl font-bold text-accent relative z-10">{value}</span>
-        </div>
-        <p className="text-gray-500 text-sm font-light">{label}</p>
-      </div>
-    );
-  }
-
-  // --- Numeric stat ---
   return (
-    <div ref={ref} className="text-center md:text-left">
-      <p className="text-3xl font-bold text-accent mb-1">
-        {`${count}${suffix}`}
-      </p>
-      <p className="text-gray-500 text-sm font-light">{label}</p>
+    <div ref={ref} role="group" className="flex flex-col items-center text-center" aria-label={`${value}. ${label}`}>
+      <div className="relative mb-2 inline-flex items-center justify-center">
+        {!isNumeric && <Orbit spinning={spinning} />}
+        <span className="relative z-10 text-5xl font-bold tabular-nums text-accent md:text-6xl" aria-hidden="true">
+          {display}
+        </span>
+      </div>
+      <span className="text-sm font-medium text-primary" aria-hidden="true">
+        {label}
+      </span>
     </div>
   );
 };

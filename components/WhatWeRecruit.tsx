@@ -33,18 +33,26 @@ export const WhatWeRecruit = ({ dark = false }: WhatWeRecruitProps) => {
           <h2 className={`text-3xl md:text-4xl font-bold tracking-tighter ${dark ? 'text-white' : 'text-primary'}`}>
             What We Recruit
           </h2>
-          <p className={`mt-3 font-light max-w-xl leading-relaxed ${dark ? 'text-gray-200' : 'text-gray-900'}`}>
+          <p className={`mt-3 max-w-xl text-base font-light leading-relaxed ${dark ? 'text-gray-200' : 'text-gray-900'}`}>
             We focus on roles that directly impact growth, product, and performance.
           </p>
         </div>
 
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px ${dark ? 'bg-white/[0.06]' : 'bg-black/[0.06]'}`}>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {specialties.map((item, index) => (
-            <div key={index} className={`p-8 group transition-colors duration-200 ${dark ? 'bg-[#16161F] hover:bg-[#1c1c2a]' : 'bg-white hover:bg-gray-50'}`}>
-              <span className="text-2xl font-bold text-accent/70 mb-4 block">
+            <div
+              key={item.title}
+              className={`group relative overflow-hidden rounded-lg p-8 transition-colors duration-200 ${
+                dark
+                  ? 'border border-white/[0.1] bg-[#1e1d2b] hover:border-accent/45 hover:bg-[#242333]'
+                  : 'border border-black/[0.06] bg-accent-50 hover:border-accent/30'
+              }`}
+            >
+              <span className="absolute inset-x-0 top-0 h-0.5 bg-accent/70" aria-hidden="true" />
+              <span className="mb-4 block text-2xl font-bold text-accent">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <h3 className={`text-base font-semibold mb-2 tracking-tight leading-snug ${dark ? 'text-white' : 'text-primary'}`}>
+              <h3 className={`mb-2 text-base font-semibold leading-snug tracking-tight ${dark ? 'text-white' : 'text-primary'}`}>
                 {item.title}
               </h3>
               <p className={`text-sm font-light leading-relaxed ${dark ? 'text-gray-200' : 'text-gray-900'}`}>

@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-
 const LOGOS = [
   { name: 'Amber Grid',      src: '/images/logos/Amber_Grid.png' },
   { name: 'Amstel',          src: '/images/logos/Amstel.png' },
@@ -43,7 +42,6 @@ export const LandingHero = () => {
     <>
       {/* ── HERO ── */}
       <section className="bg-[#16161F] relative overflow-hidden" style={{ minHeight: 'calc(100vh - 72px)' }}>
-
         {/* Desktop photo — absolute, right half */}
         <div
           className={`hidden lg:block absolute inset-y-0 right-0 w-[50%] transition-opacity duration-1000 delay-100 ${visible ? 'opacity-100' : 'opacity-0'}`}
@@ -126,9 +124,13 @@ export const LandingHero = () => {
               aria-hidden={copy === 1}
             >
               {LOGOS.map((logo) => (
-                <div key={logo.name} className="relative h-8 w-28 flex-shrink-0 opacity-50 hover:opacity-90 transition-opacity duration-300">
-                  <Image src={logo.src} alt={logo.name} fill className="object-contain" />
-                </div>
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={logo.name}
+                  src={logo.src}
+                  alt={logo.name}
+                  className="h-8 w-auto max-w-none flex-shrink-0 opacity-50 transition-opacity duration-300 hover:opacity-90"
+                />
               ))}
             </div>
           ))}

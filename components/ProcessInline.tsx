@@ -49,32 +49,33 @@ export const ProcessInline = () => {
 
         <div className="mb-14">
           <p className="eyebrow mb-3">Process</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter">
+          <h2 className="text-3xl font-bold tracking-tighter text-white md:text-4xl">
             Our Approach
           </h2>
-          <p className="mt-3 text-gray-200 font-light max-w-md leading-relaxed">
+          <p className="mt-3 max-w-md text-base font-light leading-relaxed text-gray-200">
             Structured hiring powered by practitioner insight.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.06]">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`px-0 sm:px-6 lg:px-7 py-8 sm:py-0 first:pl-0 last:pr-0 transition-all duration-500 ease-out`}
+              className="group relative overflow-hidden rounded-lg border border-white/[0.1] bg-[#1e1d2b] p-8 transition-all duration-500 ease-out hover:border-accent/45 hover:bg-[#242333]"
               style={{
                 transitionDelay: visible ? `${i * 90}ms` : '0ms',
                 opacity: visible ? 1 : 0,
                 transform: visible ? 'none' : 'translateY(12px)',
               }}
             >
-              <span className="text-xs font-semibold text-accent/60 tracking-widest mb-4 block">
+              <span className="absolute inset-x-0 top-0 h-0.5 bg-accent/70" aria-hidden="true" />
+              <span className="mb-4 block text-2xl font-bold text-accent">
                 {step.number}
               </span>
-              <h3 className="text-sm font-semibold text-white mb-2.5 leading-snug tracking-tight">
+              <h3 className="mb-2 text-base font-semibold leading-snug tracking-tight text-white">
                 {step.title}
               </h3>
-              <p className="text-xs text-gray-200 font-light leading-relaxed">
+              <p className="text-sm font-light leading-relaxed text-gray-200">
                 {step.description}
               </p>
             </div>

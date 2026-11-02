@@ -1,5 +1,6 @@
 import { getAboutPage } from '@/lib/sanity';
 import Image from 'next/image';
+import { WaveBackground } from '@/components/WaveBackground';
 import type { Metadata } from 'next';
 
 export const revalidate = 60;
@@ -197,7 +198,8 @@ export default async function AboutPage() {
   return (
     <main className="bg-white">
       {/* Hero */}
-      <section className="bg-[#16161F] pt-20 pb-24 border-b border-white/[0.06]">
+      <section className="relative isolate overflow-hidden bg-[#16161F] pt-20 pb-24 border-b border-white/[0.06]">
+        <WaveBackground />
         <div className="site-container">
           <div className="max-w-2xl">
             <p className="eyebrow mb-5">About Us</p>

@@ -1,4 +1,5 @@
 import { TalentForm } from '@/components/TalentForm';
+import { WaveBackground } from '@/components/WaveBackground';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -45,43 +46,49 @@ export default function ForTalentPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#16161F] pt-20 pb-24">
+      <section className="relative isolate overflow-hidden bg-[#16161F] pt-20 pb-24">
+        <WaveBackground />
         <div className="site-container">
           <div className="max-w-2xl">
             <p className="eyebrow mb-5">For Talent</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tightest leading-[1.02] mb-6">
               Work with recruiters who&apos;ve actually done the job
             </h1>
-            <p className="text-lg text-gray-200 font-light leading-relaxed max-w-lg">
-              We&apos;re not just recruiters. We come from digital marketing and IT security — so we understand the roles, the skills and what makes a great fit.
+            <p className="max-w-2xl text-lg font-light leading-relaxed text-gray-200">
+              We&apos;re not just recruiters. We come from digital marketing and IT<br />
+              security — so we understand the roles, the skills and what makes a great fit.
             </p>
           </div>
         </div>
       </section>
 
       {/* Benefits */}
-      <section className="section-gap bg-white border-t border-black/[0.06]">
+      <section className="section-gap border-t border-accent/10 bg-accent-50">
         <div className="site-container">
 
           <div className="mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tighter mb-3">
+            <h2 className="text-3xl font-bold tracking-tighter text-primary md:text-4xl">
               A different kind of recruitment experience
             </h2>
-            <p className="text-base text-gray-900 font-light max-w-lg leading-relaxed">
+            <p className="mt-3 max-w-lg text-base font-light leading-relaxed text-gray-900">
               We&apos;re not a CV board. We&apos;re people who understand your work, value your experience, and take your next career move seriously.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-black/[0.06]">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {benefits.map((item, index) => (
-              <div key={index} className="bg-white p-8 group hover:bg-gray-50 transition-colors duration-200">
-                <span className="text-xs font-semibold text-accent/60 uppercase tracking-widest mb-4 block">
+              <div
+                key={item.title}
+                className="group relative overflow-hidden rounded-lg border border-black/[0.06] bg-white p-6 transition-colors duration-200 hover:border-accent/35"
+              >
+                <span className="absolute inset-x-0 top-0 h-0.5 bg-accent/70" aria-hidden="true" />
+                <span className="mb-4 block text-2xl font-bold text-accent">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3 className="text-base font-semibold text-primary mb-2 tracking-tight">
+                <h3 className="mb-2 text-base font-semibold leading-snug tracking-tight text-primary">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-900 font-light leading-relaxed">
+                <p className="text-sm font-light leading-relaxed text-gray-900">
                   {item.description}
                 </p>
               </div>
@@ -100,11 +107,11 @@ export default function ForTalentPage() {
             </h2>
             <p className="text-gray-200 font-light text-sm">Roles where experience and depth matter.</p>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {fields.map((tag) => (
               <span
                 key={tag}
-                className="px-4 py-2 border border-white/10 text-gray-300 text-sm font-medium rounded-md hover:border-accent/50 hover:text-white transition-colors"
+                className="rounded-lg border border-accent/55 bg-accent/20 px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_24px_rgba(119,86,181,0.12)] transition-colors duration-200 hover:border-accent/80 hover:bg-accent/30"
               >
                 {tag}
               </span>

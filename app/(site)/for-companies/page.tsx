@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { AnimatedStat } from '@/components/AnimatedStat';
+import { WaveBackground } from '@/components/WaveBackground';
 import { WhatWeRecruit } from '@/components/WhatWeRecruit';
 import { ExperienceWithBrands } from '@/components/ExperienceWithBrands';
 import { ProcessInline } from '@/components/ProcessInline';
@@ -13,7 +15,8 @@ export default function ForCompaniesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#16161F] pt-20 pb-24">
+      <section className="relative isolate overflow-hidden bg-[#16161F] pt-20 pb-24">
+        <WaveBackground />
         <div className="site-container">
           <div className="max-w-2xl">
             <p className="eyebrow mb-5">For Companies</p>
@@ -35,19 +38,20 @@ export default function ForCompaniesPage() {
         </div>
       </section>
 
-      {/* Stats — LIGHT */}
-      <div className="bg-white border-t border-black/[0.06]">
-        <div className="site-container py-16">
-          <div className="grid grid-cols-3 gap-8">
+      {/* Stats */}
+      <div className="relative overflow-hidden border-y border-accent/10 bg-accent-50">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_32%_90%_at_18%_50%,rgba(119,86,181,0.18),transparent_70%),radial-gradient(ellipse_28%_80%_at_50%_40%,rgba(119,86,181,0.12),transparent_72%),radial-gradient(ellipse_32%_90%_at_82%_50%,rgba(119,86,181,0.18),transparent_70%)]"
+          aria-hidden="true"
+        />
+        <div className="site-container relative py-16">
+          <div className="grid grid-cols-3 gap-8 md:divide-x md:divide-accent/15">
             {[
               { value: '27+', label: 'Years combined experience' },
               { value: '100%', label: 'Practitioner-assessed roles' },
               { value: 'EU', label: 'European market coverage' },
             ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center text-center">
-                <span className="text-5xl md:text-6xl font-bold text-accent mb-2">{stat.value}</span>
-                <span className="text-sm font-medium text-primary">{stat.label}</span>
-              </div>
+              <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
             ))}
           </div>
         </div>

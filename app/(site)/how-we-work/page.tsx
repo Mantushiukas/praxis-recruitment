@@ -1,4 +1,6 @@
 import { getProcessPage } from '@/lib/sanity';
+import { ProcessTimeline } from '@/components/ProcessTimeline';
+import { WaveBackground } from '@/components/WaveBackground';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -62,7 +64,8 @@ export default async function HowWeWorkPage() {
     <main className="bg-white">
 
       {/* Hero */}
-      <section className="bg-[#16161F] pt-20 pb-24">
+      <section className="relative isolate overflow-hidden bg-[#16161F] pt-20 pb-24">
+        <WaveBackground />
         <div className="site-container">
           <div className="max-w-2xl">
             <p className="eyebrow mb-5">Our Process</p>
@@ -79,47 +82,21 @@ export default async function HowWeWorkPage() {
       </section>
 
       {/* Steps */}
-      <section className="section-gap border-t border-black/[0.06]">
+      <section className="section-gap border-t border-accent/10 bg-accent-50">
         <div className="site-container">
-          <div className="max-w-2xl">
-            {steps.map((step, index) => (
-              <div key={index} className="flex gap-10 pb-14 last:pb-0 relative">
 
-                {/* Connector line */}
-                {index < steps.length - 1 && (
-                  <div className="absolute left-[19px] top-10 bottom-0 w-px bg-black/[0.07]" aria-hidden="true" />
-                )}
-
-                {/* Number */}
-                <div className="flex-shrink-0 w-10 h-10 rounded-full border border-accent/30 text-accent flex items-center justify-center text-xs font-bold tracking-wide z-10 bg-white">
-                  {String(step.stepNumber ?? index + 1).padStart(2, '0')}
-                </div>
-
-                {/* Content */}
-                <div className="pt-1.5">
-                  <h2 className="text-xl font-semibold text-primary mb-2 tracking-tight">
-                    {step.title}
-                  </h2>
-                  {step.description && (
-                    <p className="text-gray-900 font-light leading-relaxed text-base mb-3">
-                      {step.description}
-                    </p>
-                  )}
-                  {(step.items ?? []).length > 0 && (
-                    <ul className="space-y-1.5 mt-3">
-                      {(step.items ?? []).map((item, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-gray-900 font-light">
-                          <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0 mt-2" aria-hidden="true" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-              </div>
-            ))}
+          <div className="mb-14 max-w-2xl">
+            <p className="eyebrow mb-3">The Process</p>
+            <h2 className="text-3xl font-bold tracking-tighter text-primary md:text-4xl">
+              From brief to aligned hire
+            </h2>
+            <p className="mt-3 text-base font-light leading-relaxed text-gray-900">
+              Five steps, each with a clear owner — so you always know what we are doing and what we need from you.
+            </p>
           </div>
+
+          <ProcessTimeline steps={steps} outcome="A focused shortlist, with expectations aligned on both sides." />
+
         </div>
       </section>
 

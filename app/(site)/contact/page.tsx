@@ -1,4 +1,5 @@
 import { ContactForm } from '@/components/ContactForm';
+import { WaveBackground } from '@/components/WaveBackground';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,7 +12,8 @@ export default function ContactPage() {
     <main className="bg-white">
 
       {/* Hero */}
-      <section className="bg-[#16161F] pt-20 pb-24">
+      <section className="relative isolate overflow-hidden bg-[#16161F] pt-20 pb-24">
+        <WaveBackground />
         <div className="site-container">
           <div className="max-w-xl">
             <p className="eyebrow mb-5">Contact</p>
